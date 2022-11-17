@@ -50,7 +50,7 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 ### Post-processing
 
 #### GLM analysis
-
+- to be defined later
 
 #### PRF analysis
 - [ ] average and leave-one-out averaging of runs together [preproc_end.py](analysis_code/preproc/functional/preproc_end.py)
