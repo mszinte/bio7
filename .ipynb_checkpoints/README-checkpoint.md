@@ -25,12 +25,13 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 ### Pre-processing
 
 #### BIDS
-- [ ] convert dicom to tar and delete dicoms from mesocentre [dicom2tar.py](analysis_code/preproc/bids/dicom2tar.py)
-- [ ] create bids dataset from tar files [tar2bids.py](analysis_code/preproc/bids/tar2bids.py)
-- [ ] edition of json files for bids [to_name](analysis_code/preproc/bids/to_name.py)
-- [ ] create events files [create_events.py](analysis_code/preproc/bids/create_events.py)
+- [ ] convert dicom to nifti (on CEMEREM)
+- [ ] edition of json files for bids 
+- [ ] create events files
 - [ ] background deletion of T1w images [mp2rage_genUniDen.py](analysis_code/preproc/bids/mp2rage_genUniDen.py)
+- [ ] deal with other files type (penny seems to have it done somewhere)
 - [ ] deface participants t1w image [deface_sbatch.py](analysis_code/preproc/bids/deface_sbatch.py)
+- [ ] deface participants other image type
 - [ ] validation using web [BIDS validator](https://bids-standard.github.io/bids-validator/)
 
 #### Structural preprocessing-
@@ -51,6 +52,8 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 
 #### GLM analysis
 - to be defined later
+- idea : https://fitlins.readthedocs.io/en/latest/usage.html
+
 
 #### PRF analysis
 - [ ] average and leave-one-out averaging of runs together [preproc_end.py](analysis_code/preproc/functional/preproc_end.py)

@@ -1,0 +1,26 @@
+arg_list = argv ();
+
+if argv () < 4
+  printf("Not enough or wrong arguments: please use: octave_presurf.m -UNI <full path to uni image> -INV2 <full path to inv2 image>");
+  exit;
+end
+
+
+for i = 1:nargin
+  printf (" %s", arg_list{i});
+  if arg_list{i} == "-UNI"
+      i=i+1;
+      UNI=arg_list{i};
+  else if arg_list{i} == "-INV2"
+      i=i+1;
+      INV2=arg_list{i};
+  else
+      printf("%s: unknown argument. Please use: octave_presurf.m -UNI <full path to uni image> -INV2 <full path to inv2 image>", arg_list{i});
+      exit;
+  end
+end
+
+%printf ("UNI: %s", UNI);
+%printf ("INV2: %s", INV2);
+printf ("\n");
+exit
