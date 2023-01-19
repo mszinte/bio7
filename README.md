@@ -18,6 +18,16 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 [FreeSurfer](https://surfer.nmr.mgh.harvard.edu/)
 </br>
 
+### To do
+- [ ] add --help option to codes, argparser
+- [ ] penny to update readme with codes etc
+- [ ] penny event files R + data > sourcedata 
+- [ ] martin event files + data > sourcedata
+- [ ] martin presurfer python way 
+- [ ] mih jps participants tsv redcap > sourcedata 
+- [ ] martin finish setup mihaela jupyterlab 
+- [ ] penny mounting disks locally 
+- [ ] martin deface participants t1w image
 
 ## Data analysis
 ---
