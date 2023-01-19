@@ -18,6 +18,8 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 [FreeSurfer](https://surfer.nmr.mgh.harvard.edu/)
 </br>
 
+### To do
+- [ ] add --help option to codes, argparser
 
 ## Data analysis
 ---
