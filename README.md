@@ -20,25 +20,32 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 
 ### To do
 - [ ] add --help option to codes, argparser
-- [ ] penny to update readme with codes etc
 - [ ] penny event files R + data > sourcedata 
 - [ ] martin event files + data > sourcedata
 - [ ] martin presurfer python way 
 - [ ] mih jps participants tsv redcap > sourcedata 
 - [ ] martin finish setup mihaela jupyterlab 
-- [ ] penny mounting disks locally 
 - [ ] martin deface participants t1w image
 
 ## Data analysis
 ---
 
+### Utilities
+- [ ] correct permissions for all project files [change_folder_access.py](analysis_code/utils/change_folder_access.py)
+- [ ] backup mesocentre project folder to server [backup_mesocentre.py](analysis_code/utils/backup_mesocentre.py)
+
 ### Pre-processing
 
 #### BIDS
-- [ ] convert dicom to nifti (on CEMEREM)
-- [ ] edition of json files for bids 
-- [ ] create events files
-- [ ] background deletion of T1w images [mp2rage_genUniDen.py](analysis_code/preproc/bids/mp2rage_genUniDen.py)
+- [ ] copy behavioural fMRI data to mesocentre [ ]()
+- [ ] copy clinical RedCap data to mesocentre [ ]()
+- [x] copy dicoms to mesocentre [dicom2mesocentre.py](analysis_code/preproc/bids/dicom2mesocentre.py)
+- [x] check over dicoms [dicom_editor.py](analysis_code/preproc/bids/dicom_editor.py)
+- [x] convert dicom to tar and delete dicoms from mesocentre [dicom2tar.py](analysis_code/preproc/bids/dicom2tar.py)
+- [x] create bids dataset from tar files [tar2bids.py](analysis_code/preproc/bids/tar2bids.py) (calls bids organisation in [bids_heuristic_file_bio7.py](analysis/code/preproc/bids/bids_heuristic_file_bio7.py))
+- [x] edition of json files for tasks and anonymysation [json_editor.py](analysis_code/preproc/bids/json_editor.py)
+- [ ] create events files with R [events_bio7_retin.R](), [events_bio7_faces.R]()
+- [ ] background deletion of T1w images [mp2rage_genUniDen.py](analysis_code/preproc/bids/mp2rage_genUniDen.py) or [presurfer.py]()
 - [ ] deal with other files type (penny seems to have it done somewhere)
 - [ ] deface participants t1w image [deface_sbatch.py](analysis_code/preproc/bids/deface_sbatch.py)
 - [ ] deface participants other image type
