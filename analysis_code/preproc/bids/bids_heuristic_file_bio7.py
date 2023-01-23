@@ -58,13 +58,13 @@ def infotodict(seqinfo):
     
     
     #BOLD
-    resting_lr      = create_key('{bids_subject_session_dir}/fmap/{bids_subject_session_prefix}_task-resting_dir-{dir}_run-{item:02d}_epi')
+    resting_lr      = create_key('{bids_subject_session_dir}/fmap/{bids_subject_session_prefix}_acq-resting_dir-{dir}_run-{item:02d}_epi')
     resting_rl      = create_key('{bids_subject_session_dir}/func/{bids_subject_session_prefix}_task-resting_dir-{dir}_run-{item:02d}_bold')
     
-    retin_ap      = create_key('{bids_subject_session_dir}/fmap/{bids_subject_session_prefix}_task-retin_dir-{dir}_run-{item:02d}_epi')
+    retin_ap      = create_key('{bids_subject_session_dir}/fmap/{bids_subject_session_prefix}_acq-retin_dir-{dir}_run-{item:02d}_epi')
     retin_pa      = create_key('{bids_subject_session_dir}/func/{bids_subject_session_prefix}_task-retin_dir-{dir}_run-{item:02d}_bold')
 
-    faces_lr      = create_key('{bids_subject_session_dir}/fmap/{bids_subject_session_prefix}_task-faces_dir-{dir}_run-{item:02d}_epi')
+    faces_lr      = create_key('{bids_subject_session_dir}/fmap/{bids_subject_session_prefix}_acq-faces_dir-{dir}_run-{item:02d}_epi')
     faces_rl      = create_key('{bids_subject_session_dir}/func/{bids_subject_session_prefix}_task-faces_dir-{dir}_run-{item:02d}_bold')
     
     faceloc_rl      = create_key('{bids_subject_session_dir}/func/{bids_subject_session_prefix}_task-faceloc_dir-{dir}_run-{item:02d}_bold')
