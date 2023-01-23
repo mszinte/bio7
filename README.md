@@ -19,7 +19,7 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 </br>
 
 ### To do
-- [ ] add --help option to codes, argparser
+- [ ] add argparse --help option to codes + modify home_sw_dir paths 
 - [ ] penny event files R + data > sourcedata 
 - [ ] penny - put experiment code in experiment_code/ folder
 - [x] martin - put experiment code in experiment_code/ folder
