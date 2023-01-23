@@ -21,10 +21,12 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 ### To do
 - [ ] add --help option to codes, argparser
 - [ ] penny event files R + data > sourcedata 
+- [ ] penny - put experiment code in experiment_code/ folder
+- [x] martin - put experiment code in experiment_code/ folder
 - [ ] martin event files + data > sourcedata
 - [ ] martin presurfer python way 
 - [ ] mih jps participants tsv redcap > sourcedata 
-- [ ] martin finish setup mihaela jupyterlab 
+- [x] martin finish setup mihaela jupyterlab 
 - [ ] martin deface participants t1w image
 
 ## Data analysis
