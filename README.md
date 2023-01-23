@@ -19,11 +19,11 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 </br>
 
 ### To do
-- [ ] add --help option to codes, argparser
+- [ ] add argparse --help option to codes + modify home_sw_dir paths 
 - [ ] penny event files R + data > sourcedata 
 - [ ] martin event files + data > sourcedata
 - [ ] martin presurfer python way 
-- [ ] mih jps participants tsv redcap > sourcedata 
+- [ ] mih jps participants json + tsv redcap > sourcedata 
 - [ ] martin finish setup mihaela jupyterlab 
 - [ ] martin deface participants t1w image
 
