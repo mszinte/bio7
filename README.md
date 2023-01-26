@@ -71,8 +71,8 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 
 - [ ] manual definition of lesion mapping [lesion_mapping.py](analysis_code/preproc/anatomical/lesion_mapping.py)
 - [ ] fMRIprep with anat-only [fmriprep_sbatch.py](analysis_code/preproc/functional/fmriprep_sbatch.py)
-- [ ] create sagital view video before and after manual edit [sagital_view.py](analysis_code/preproc/anatomical/sagital_view.py)
-- [ ] manual edit of brain segmentation [to_be_define](/asdasd/)
+- [x] create sagital view video before and after manual edit [sagital_view.py](analysis_code/preproc/anatomical/sagital_view.py)
+- [x] manual edit of brain segmentation [pial_edits.sh](analysis_code/preproc/anatomical/sagital_view.py)
 - [ ] re-run freesurfer to include the manual change of the pial surface [to_be_define](/asdasd/)
 - [ ] cut the brain and flatten it [to_be_define](/asdasd/)
 - [ ] create pycortex dataset [to_be_define](/asdasd/)
