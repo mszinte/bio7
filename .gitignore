@@ -1,3 +1,4 @@
 experiment_code/stim/screenshots/
 experiment_code/others/pRF_vid/
-.ipynb_checkpoints/
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
