@@ -54,28 +54,26 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 #### BIDS
 - [ ] copy behavioural fMRI data to mesocentre [ ]()
 - [ ] copy clinical RedCap data to mesocentre [ ]()
-- [x] copy dicoms to mesocentre [dicom2mesocentre.py](analysis_code/preproc/bids/dicom2mesocentre.py)
-- [x] check over dicoms [dicom_editor.py](analysis_code/preproc/bids/dicom_editor.py)
-- [x] convert dicom to tar and delete dicoms from mesocentre [dicom2tar.py](analysis_code/preproc/bids/dicom2tar.py)
-- [x] create bids dataset from tar files [tar2bids.py](analysis_code/preproc/bids/tar2bids.py) (calls bids organisation in [bids_heuristic_file_bio7.py](analysis/code/preproc/bids/bids_heuristic_file_bio7.py))
-- [x] edition of json files for tasks and anonymysation [json_editor.py](analysis_code/preproc/bids/json_editor.py)
-- [x] update participants.tsv [tsv_editor.py](analysis_code/preproc/bids/tsv_editor.py)
-- [ ] create events files with R [events_bio7_retin.R](), [events_bio7_faces.R]()
-- [ ] background deletion of T1w images [mp2rage_genUniDen.py](analysis_code/preproc/bids/mp2rage_genUniDen.py) or [presurfer.py]()
-- [ ] deal with other files type (penny seems to have it done somewhere)
-- [ ] deface participants t1w image [deface_sbatch.py](analysis_code/preproc/bids/deface_sbatch.py)
-- [ ] deface participants other image type
-- [ ] validation using web [BIDS validator](https://bids-standard.github.io/bids-validator/)
+- [x] copy dicoms to mesocentre: [dicom2mesocentre.py](analysis_code/preproc/bids/dicom2mesocentre.py)
+- [x] check over dicoms: [dicom_editor.py](analysis_code/preproc/bids/dicom_editor.py)
+- [x] convert dicom to tar and delete dicoms from mesocentre: [dicom2tar.py](analysis_code/preproc/bids/dicom2tar.py)
+- [x] create bids dataset from tar files: [tar2bids.py](analysis_code/preproc/bids/tar2bids.py) (calls bids organisation in [bids_heuristic_file_bio7.py](analysis/code/preproc/bids/bids_heuristic_file_bio7.py))
+- [x] edition of json files for tasks and anonymysation: [json_editor.py](analysis_code/preproc/bids/json_editor.py)
+- [x] update participants.tsv: [tsv_editor.py](analysis_code/preproc/bids/tsv_editor.py)
+- [ ] create events files with R: [events_bio7_retin.R](), [events_bio7_faces.R]()
+- [ ] background deletion of T1w images: [mp2rage_genUniDen.py](analysis_code/preproc/bids/mp2rage_genUniDen.py) or [presurfer.py]()
+- [ ] deface participants anatomical image: [deface_sbatch.py](analysis_code/preproc/bids/deface_sbatch.py)
+- [ ] BIDS validation : [BIDS validator](https://bids-standard.github.io/bids-validator/)
 
 #### Structural preprocessing-
 
-- [ ] manual definition of lesion mapping [lesion_mapping.py](analysis_code/preproc/anatomical/lesion_mapping.py)
-- [ ] fMRIprep with anat-only [fmriprep_sbatch.py](analysis_code/preproc/functional/fmriprep_sbatch.py)
+- [ ] manual definition of lesion mapping: [lesion_mapping.py](analysis_code/preproc/anatomical/lesion_mapping.py)
+- [ ] fMRIprep with anat-only: [fmriprep_sbatch.py](analysis_code/preproc/functional/fmriprep_sbatch.py)
 - [x] create sagital view video before and after manual edit [sagital_view.py](analysis_code/preproc/anatomical/sagital_view.py)
 - [x] manual edit of brain segmentation [pial_edits.sh](analysis_code/preproc/anatomical/sagital_view.py)
-- [ ] re-run freesurfer to include the manual change of the pial surface [to_be_define](/asdasd/)
-- [ ] cut the brain and flatten it [to_be_define](/asdasd/)
-- [ ] create pycortex dataset [to_be_define](/asdasd/)
+- [x] re-run freesurfer to include the manual change of the pial surface: [freesurfer_pial.py](analysis_code/preproc/anatomical/freesurfer_pial.py)
+- [ ] cut the brain and flatten it [to_be_define_soon](/asdasd/)
+- [ ] create pycortex dataset [to_be_define_soon](/asdasd/)
 
 #### Functional preprocessing
 - [ ] fMRIprep [fmriprep_sbatch.py](analysis_code/preproc/functional/fmriprep_sbatch.py)
