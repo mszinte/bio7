@@ -1,0 +1,704 @@
+bar pass 1 started
+bar pass 1 trial onset 1bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 trial offset 1bar pass 1 trial onset 2
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 trial offset 2bar pass 1 trial onset 3
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 trial offset 3bar pass 1 trial onset 4
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 trial offset 4bar pass 1 trial onset 5
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 trial offset 5bar pass 1 trial onset 6
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 trial offset 6bar pass 1 trial onset 7
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 trial offset 7bar pass 1 trial onset 8
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 trial offset 8bar pass 1 trial onset 9
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 trial offset 9bar pass 1 trial onset 10
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 trial offset 10bar pass 1 trial onset 11
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 trial offset 11bar pass 1 trial onset 12
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 event mri_trigger
+bar pass 1 trial offset 12bar pass 2 trial onset 13
+bar pass 1 stopped
+bar pass 2 started
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 stimulus probe onset 13bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial 13 event c
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial offset 13bar pass 2 trial onset 14
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 stimulus probe onset 14bar pass 2 event mri_trigger
+bar pass 2 trial 14 event b
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial offset 14bar pass 2 trial onset 15
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 stimulus probe onset 15bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial 15 event c
+stimulus staircase updated to 10.00
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial offset 15bar pass 2 trial onset 16
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 stimulus probe onset 16bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial 16 event c
+stimulus staircase updated to 11.00
+bar pass 2 trial offset 16bar pass 2 trial onset 17
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 stimulus probe onset 17bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial offset 17bar pass 2 trial onset 18
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 stimulus probe onset 18bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial 18 event b
+stimulus staircase updated to 12.00
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial offset 18bar pass 2 trial onset 19
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 stimulus probe onset 19bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial 19 event c
+stimulus staircase updated to 13.00
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial offset 19bar pass 2 trial onset 20
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 stimulus probe onset 20bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial 20 event b
+stimulus staircase updated to 14.00
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial offset 20bar pass 2 trial onset 21
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 stimulus probe onset 21bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial 21 event b
+stimulus staircase updated to 15.00
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial offset 21bar pass 2 trial onset 22
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 stimulus probe onset 22bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial 22 event b
+stimulus staircase updated to 15.00
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial offset 22bar pass 2 trial onset 23
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 stimulus probe onset 23bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial 23 event c
+stimulus staircase updated to 15.00
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial offset 23bar pass 2 trial onset 24
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 stimulus probe onset 24bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial 24 event c
+stimulus staircase updated to 15.00
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 trial offset 24bar pass 2 trial onset 25
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 event mri_trigger
+bar pass 2 stimulus probe onset 25bar pass 2 event mri_trigger
+bar pass 2 trial 25 event c
+stimulus staircase updated to 15.00
+bar pass 2 trial offset 25bar pass 2 trial onset 26
+bar pass 2 stimulus probe onset 26bar pass 2 trial 26 event c
+stimulus staircase updated to 15.00
+bar pass 2 trial offset 26bar pass 2 trial onset 27
+bar pass 2 stimulus probe onset 27bar pass 2 trial 27 event c
+stimulus staircase updated to 15.00
+bar pass 2 trial offset 27bar pass 2 trial onset 28
+bar pass 2 stimulus probe onset 28bar pass 2 trial 28 event c
+stimulus staircase updated to 15.00
+bar pass 2 trial offset 28bar pass 2 trial onset 29
+bar pass 2 stimulus probe onset 29bar pass 2 trial 29 event b
+stimulus staircase updated to 15.00
+bar pass 2 trial offset 29bar pass 2 trial onset 30
+bar pass 2 stimulus probe onset 30bar pass 2 trial 30 event c
+stimulus staircase updated to 15.00
+bar pass 2 trial offset 30bar pass 2 trial onset 31
+bar pass 2 stimulus probe onset 31bar pass 2 trial 31 event c
+stimulus staircase updated to 15.00
+bar pass 2 trial offset 31bar pass 2 trial onset 32
+bar pass 2 stimulus probe onset 32bar pass 2 trial 32 event b
+stimulus staircase updated to 15.00
+bar pass 2 trial offset 32bar pass 2 trial onset 33
+bar pass 2 stimulus probe onset 33bar pass 2 trial 33 event b
+stimulus staircase updated to 15.00
+bar pass 2 trial offset 33bar pass 2 trial onset 34
+bar pass 2 stimulus probe onset 34bar pass 2 trial 34 event c
+stimulus staircase updated to 15.00
+bar pass 2 trial offset 34bar pass 2 trial onset 35
+bar pass 2 stimulus probe onset 35bar pass 2 trial 35 event c
+stimulus staircase updated to 15.00
+bar pass 2 trial offset 35bar pass 2 trial onset 36
+bar pass 2 stimulus probe onset 36bar pass 2 trial 36 event b
+stimulus staircase updated to 15.00
+bar pass 2 trial offset 36bar pass 3 trial onset 37
+bar pass 2 stopped
+bar pass 3 started
+bar pass 3 trial offset 37bar pass 3 trial onset 38
+bar pass 3 trial offset 38bar pass 3 trial onset 39
+bar pass 3 trial offset 39bar pass 3 trial onset 40
+bar pass 3 trial offset 40bar pass 3 trial onset 41
+bar pass 3 trial offset 41bar pass 3 trial onset 42
+bar pass 3 trial offset 42bar pass 3 trial onset 43
+bar pass 3 trial offset 43bar pass 3 trial onset 44
+bar pass 3 trial offset 44bar pass 3 trial onset 45
+bar pass 3 trial offset 45bar pass 3 trial onset 46
+bar pass 3 trial offset 46bar pass 3 trial onset 47
+bar pass 3 trial offset 47bar pass 3 trial onset 48
+bar pass 3 trial offset 48bar pass 4 trial onset 49
+bar pass 3 stopped
+bar pass 4 started
+bar pass 4 stimulus probe onset 49bar pass 4 trial offset 49bar pass 4 trial onset 50
+bar pass 4 stimulus probe onset 50bar pass 4 trial offset 50bar pass 4 trial onset 51
+bar pass 4 stimulus probe onset 51bar pass 4 trial 51 event b
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 51bar pass 4 trial onset 52
+bar pass 4 stimulus probe onset 52bar pass 4 trial 52 event c
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 52bar pass 4 trial onset 53
+bar pass 4 stimulus probe onset 53bar pass 4 trial 53 event c
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 53bar pass 4 trial onset 54
+bar pass 4 stimulus probe onset 54bar pass 4 trial 54 event c
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 54bar pass 4 trial onset 55
+bar pass 4 stimulus probe onset 55bar pass 4 trial 55 event c
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 55bar pass 4 trial onset 56
+bar pass 4 stimulus probe onset 56bar pass 4 trial 56 event b
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 56bar pass 4 trial onset 57
+bar pass 4 stimulus probe onset 57bar pass 4 trial 57 event b
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 57bar pass 4 trial onset 58
+bar pass 4 stimulus probe onset 58bar pass 4 trial 58 event b
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 58bar pass 4 trial onset 59
+bar pass 4 stimulus probe onset 59bar pass 4 trial 59 event b
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 59bar pass 4 trial onset 60
+bar pass 4 stimulus probe onset 60bar pass 4 trial 60 event c
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 60bar pass 4 trial onset 61
+bar pass 4 stimulus probe onset 61bar pass 4 trial 61 event b
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 61bar pass 4 trial onset 62
+bar pass 4 stimulus probe onset 62bar pass 4 trial 62 event c
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 62bar pass 4 trial onset 63
+bar pass 4 stimulus probe onset 63bar pass 4 trial 63 event c
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 63bar pass 4 trial onset 64
+bar pass 4 stimulus probe onset 64bar pass 4 trial 64 event c
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 64bar pass 4 trial onset 65
+bar pass 4 stimulus probe onset 65bar pass 4 trial 65 event c
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 65bar pass 4 trial onset 66
+bar pass 4 stimulus probe onset 66bar pass 4 trial 66 event b
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 66bar pass 4 trial onset 67
+bar pass 4 stimulus probe onset 67bar pass 4 trial 67 event b
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 67bar pass 4 trial onset 68
+bar pass 4 stimulus probe onset 68bar pass 4 trial 68 event b
+bar pass 4 trial offset 68bar pass 4 trial onset 69
+bar pass 4 trial 69 event c
+stimulus staircase updated to 15.00
+bar pass 4 stimulus probe onset 69bar pass 4 trial offset 69bar pass 4 trial onset 70
+bar pass 4 stimulus probe onset 70bar pass 4 trial 70 event b
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 70bar pass 4 trial onset 71
+bar pass 4 stimulus probe onset 71bar pass 4 trial 71 event b
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 71bar pass 4 trial onset 72
+bar pass 4 stimulus probe onset 72bar pass 4 trial 72 event b
+stimulus staircase updated to 15.00
+bar pass 4 trial offset 72bar pass 5 trial onset 73
+bar pass 4 stopped
+bar pass 5 started
+bar pass 5 trial offset 73bar pass 5 trial onset 74
+bar pass 5 trial offset 74bar pass 5 trial onset 75
+bar pass 5 trial offset 75bar pass 5 trial onset 76
+bar pass 5 trial offset 76bar pass 5 trial onset 77
+bar pass 5 trial offset 77bar pass 5 trial onset 78
+bar pass 5 trial offset 78bar pass 5 trial onset 79
+bar pass 5 trial offset 79bar pass 5 trial onset 80
+bar pass 5 trial offset 80bar pass 5 trial onset 81
+bar pass 5 trial offset 81bar pass 5 trial onset 82
+bar pass 5 trial offset 82bar pass 5 trial onset 83
+bar pass 5 trial offset 83bar pass 5 trial onset 84
+bar pass 5 trial offset 84bar pass 6 trial onset 85
+bar pass 5 stopped
+bar pass 6 started
+bar pass 6 stimulus probe onset 85bar pass 6 trial 85 event b
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 85bar pass 6 trial onset 86
+bar pass 6 stimulus probe onset 86bar pass 6 trial 86 event c
+bar pass 6 trial offset 86bar pass 6 trial onset 87
+bar pass 6 stimulus probe onset 87bar pass 6 trial 87 event c
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 87bar pass 6 trial onset 88
+bar pass 6 stimulus probe onset 88bar pass 6 trial 88 event c
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 88bar pass 6 trial onset 89
+bar pass 6 stimulus probe onset 89bar pass 6 trial 89 event b
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 89bar pass 6 trial onset 90
+bar pass 6 stimulus probe onset 90bar pass 6 trial 90 event b
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 90bar pass 6 trial onset 91
+bar pass 6 stimulus probe onset 91bar pass 6 trial 91 event b
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 91bar pass 6 trial onset 92
+bar pass 6 stimulus probe onset 92bar pass 6 trial 92 event c
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 92bar pass 6 trial onset 93
+bar pass 6 stimulus probe onset 93bar pass 6 trial 93 event b
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 93bar pass 6 trial onset 94
+bar pass 6 stimulus probe onset 94bar pass 6 trial 94 event c
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 94bar pass 6 trial onset 95
+bar pass 6 stimulus probe onset 95bar pass 6 trial offset 95bar pass 6 trial onset 96
+bar pass 6 stimulus probe onset 96bar pass 6 trial 96 event b
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 96bar pass 6 trial onset 97
+bar pass 6 stimulus probe onset 97bar pass 6 trial 97 event c
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 97bar pass 6 trial onset 98
+bar pass 6 stimulus probe onset 98bar pass 6 trial 98 event c
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 98bar pass 6 trial onset 99
+bar pass 6 stimulus probe onset 99bar pass 6 trial 99 event c
+bar pass 6 trial offset 99bar pass 6 trial onset 100
+bar pass 6 stimulus probe onset 100bar pass 6 trial 100 event b
+bar pass 6 trial offset 100bar pass 6 trial onset 101
+bar pass 6 stimulus probe onset 101bar pass 6 trial 101 event c
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 101bar pass 6 trial onset 102
+bar pass 6 stimulus probe onset 102bar pass 6 trial 102 event c
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 102bar pass 6 trial onset 103
+bar pass 6 stimulus probe onset 103bar pass 6 trial 103 event c
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 103bar pass 6 trial onset 104
+bar pass 6 stimulus probe onset 104bar pass 6 trial 104 event b
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 104bar pass 6 trial onset 105
+bar pass 6 stimulus probe onset 105bar pass 6 trial 105 event b
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 105bar pass 6 trial onset 106
+bar pass 6 stimulus probe onset 106bar pass 6 trial 106 event b
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 106bar pass 6 trial onset 107
+bar pass 6 stimulus probe onset 107bar pass 6 trial 107 event b
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 107bar pass 6 trial onset 108
+bar pass 6 stimulus probe onset 108bar pass 6 trial 108 event b
+stimulus staircase updated to 15.00
+bar pass 6 trial offset 108bar pass 7 trial onset 109
+bar pass 6 stopped
+bar pass 7 started
+bar pass 7 trial offset 109bar pass 7 trial onset 110
+bar pass 7 trial offset 110bar pass 7 trial onset 111
+bar pass 7 trial offset 111bar pass 7 trial onset 112
+bar pass 7 trial offset 112bar pass 7 trial onset 113
+bar pass 7 trial offset 113bar pass 7 trial onset 114
+bar pass 7 trial offset 114bar pass 7 trial onset 115
+bar pass 7 trial offset 115bar pass 7 trial onset 116
+bar pass 7 trial offset 116bar pass 7 trial onset 117
+bar pass 7 trial offset 117bar pass 7 trial onset 118
+bar pass 7 trial offset 118bar pass 7 trial onset 119
+bar pass 7 trial offset 119bar pass 7 trial onset 120
+bar pass 7 trial offset 120bar pass 8 trial onset 121
+bar pass 7 stopped
+bar pass 8 started
+bar pass 8 stimulus probe onset 121bar pass 8 trial 121 event c
+stimulus staircase updated to 15.00
+bar pass 8 trial offset 121bar pass 8 trial onset 122
+bar pass 8 stimulus probe onset 122bar pass 8 trial 122 event c
+stimulus staircase updated to 15.00
+bar pass 8 trial offset 122bar pass 8 trial onset 123
+bar pass 8 stimulus probe onset 123bar pass 8 trial 123 event c
+stimulus staircase updated to 15.00
+bar pass 8 trial offset 123bar pass 8 trial onset 124
+bar pass 8 stimulus probe onset 124bar pass 8 trial 124 event c
+stimulus staircase updated to 15.00
+bar pass 8 trial offset 124bar pass 8 trial onset 125
+bar pass 8 stimulus probe onset 125bar pass 8 trial 125 event c
+bar pass 8 trial offset 125bar pass 8 trial onset 126
+bar pass 8 stimulus probe onset 126bar pass 8 trial 126 event c
+stimulus staircase updated to 15.00
+bar pass 8 trial offset 126bar pass 8 trial onset 127
+bar pass 8 stimulus probe onset 127bar pass 8 trial 127 event b
+stimulus staircase updated to 15.00
+bar pass 8 trial offset 127bar pass 8 trial onset 128
+bar pass 8 stimulus probe onset 128bar pass 8 trial 128 event c
+stimulus staircase updated to 15.00
+bar pass 8 trial offset 128bar pass 8 trial onset 129
+bar pass 8 stimulus probe onset 129bar pass 8 trial 129 event b
+stimulus staircase updated to 15.00
+bar pass 8 trial offset 129bar pass 8 trial onset 130
+bar pass 8 stimulus probe onset 130bar pass 8 trial 130 event b
+stimulus staircase updated to 15.00
+bar pass 8 trial offset 130bar pass 8 trial onset 131
+bar pass 8 stimulus probe onset 131bar pass 8 trial 131 event c
+stimulus staircase updated to 15.00
+bar pass 8 trial offset 131bar pass 8 trial onset 132
+bar pass 8 stimulus probe onset 132bar pass 8 trial 132 event b
+stimulus staircase updated to 15.00
+bar pass 8 trial offset 132bar pass 8 trial onset 133
+bar pass 8 stimulus probe onset 133bar pass 8 trial 133 event c
+stimulus staircase updated to 15.00
+bar pass 8 trial offset 133bar pass 8 trial onset 134
+bar pass 8 stimulus probe onset 134bar pass 8 trial 134 event b
+stimulus staircase updated to 15.00
+bar pass 8 trial offset 134bar pass 8 trial onset 135
+bar pass 8 stimulus probe onset 135bar pass 8 trial 135 event c
+bar pass 8 trial offset 135bar pass 8 trial onset 136
+bar pass 8 stimulus probe onset 136bar pass 8 trial offset 136bar pass 8 trial onset 137
+bar pass 8 stimulus probe onset 137bar pass 8 trial 137 event c
+stimulus staircase updated to 15.00
+bar pass 8 trial offset 137bar pass 8 trial onset 138
+bar pass 8 stimulus probe onset 138bar pass 8 trial 138 event c
+bar pass 8 trial offset 138bar pass 8 trial onset 139
+bar pass 8 stimulus probe onset 139bar pass 8 trial 139 event c
+bar pass 8 trial offset 139bar pass 8 trial onset 140
+bar pass 8 stimulus probe onset 140bar pass 8 trial 140 event c
+stimulus staircase updated to 14.00
+bar pass 8 trial offset 140bar pass 8 trial onset 141
+bar pass 8 stimulus probe onset 141bar pass 8 trial 141 event b
+bar pass 8 trial offset 141bar pass 8 trial onset 142
+bar pass 8 stimulus probe onset 142bar pass 8 trial 142 event c
+bar pass 8 trial offset 142bar pass 8 trial onset 143
+bar pass 8 stimulus probe onset 143bar pass 8 trial offset 143bar pass 8 trial onset 144
+bar pass 8 stimulus probe onset 144bar pass 8 trial offset 144bar pass 9 trial onset 145
+bar pass 8 stopped
+bar pass 9 started
+bar pass 9 trial offset 145bar pass 9 trial onset 146
+bar pass 9 trial offset 146bar pass 9 trial onset 147
+bar pass 9 trial offset 147bar pass 9 trial onset 148
+bar pass 9 trial offset 148bar pass 9 trial onset 149
+bar pass 9 trial offset 149bar pass 9 trial onset 150
+bar pass 9 trial offset 150bar pass 9 trial onset 151
+bar pass 9 trial offset 151bar pass 9 trial onset 152
+bar pass 9 trial offset 152bar pass 9 trial onset 153
+bar pass 9 trial offset 153bar pass 9 trial onset 154
+bar pass 9 trial offset 154bar pass 9 trial onset 155
+bar pass 9 trial offset 155bar pass 9 trial onset 156
+bar pass 9 trial offset 156bar pass 9 stopped

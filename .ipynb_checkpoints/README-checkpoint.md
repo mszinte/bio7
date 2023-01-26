@@ -16,41 +16,55 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 [pRFpy](https://github.com/VU-Cog-Sci/prfpy); 
 [pybest](https://github.com/lukassnoek/pybest);
 [FreeSurfer](https://surfer.nmr.mgh.harvard.edu/)
+[Psychtoolbox](http://psychtoolbox.org/)
 </br>
 
 ### To do
 - [ ] add argparse --help option to codes + modify home_sw_dir paths 
 - [ ] penny event files R + data > sourcedata 
+- [ ] penny - put experiment code in experiment_code/ folder
+- [x] martin - put experiment code in experiment_code/ folder
 - [ ] martin event files + data > sourcedata
 - [ ] martin presurfer python way 
-- [ ] mih jps participants json + tsv redcap > sourcedata 
-- [ ] martin finish setup mihaela jupyterlab 
+- [ ] mih jps participants tsv redcap > sourcedata 
+- [x] martin finish setup mihaela jupyterlab 
 - [ ] martin deface participants t1w image
+
+## Experiments
+---
+### Resting state task
+- To lauch the code: [expLauncher.m](experiment_code/prfexp7t/main/expLauncher.m)
+  - to run use Matlab and Psychtoolbox
+  - at first execution, generate the noise pattern stimuli by putting const.genStimuli to 1 (line 48)
+
+### Retinotopy task
+
+### Face task
+
 
 ## Data analysis
 ---
 
 ### Utilities
-- [ ] correct permissions for all project files [change_folder_access.py](analysis_code/utils/change_folder_access.py)
-- [ ] backup mesocentre project folder to server [backup_mesocentre.py](analysis_code/utils/backup_mesocentre.py)
+- [ ] correct permissions for all project files: [change_folder_access.py](analysis_code/utils/change_folder_access.py)
+- [ ] backup mesocentre project folder to server: [backup_mesocentre.py](analysis_code/utils/backup_mesocentre.py)
 
 ### Pre-processing
 
 #### BIDS
 - [ ] copy behavioural fMRI data to mesocentre [ ]()
 - [ ] copy clinical RedCap data to mesocentre [ ]()
-- [x] copy dicoms to mesocentre [dicom2mesocentre.py](analysis_code/preproc/bids/dicom2mesocentre.py)
-- [x] check over dicoms [dicom_editor.py](analysis_code/preproc/bids/dicom_editor.py)
-- [x] convert dicom to tar and delete dicoms from mesocentre [dicom2tar.py](analysis_code/preproc/bids/dicom2tar.py)
-- [x] create bids dataset from tar files [tar2bids.py](analysis_code/preproc/bids/tar2bids.py) (calls bids organisation in [bids_heuristic_file_bio7.py](analysis/code/preproc/bids/bids_heuristic_file_bio7.py))
-- [x] edition of json files for tasks and anonymysation [json_editor.py](analysis_code/preproc/bids/json_editor.py)
-- [x] update participants.tsv [tsv_editor.py](analysis_code/preproc/bids/tsv_editor.py)
-- [ ] create events files with R [events_bio7_retin.R](), [events_bio7_faces.R]()
-- [ ] background deletion of T1w images [mp2rage_genUniDen.py](analysis_code/preproc/bids/mp2rage_genUniDen.py) or [presurfer.py]()
-- [ ] deal with other files type (penny seems to have it done somewhere)
-- [ ] deface participants t1w image [deface_sbatch.py](analysis_code/preproc/bids/deface_sbatch.py)
-- [ ] deface participants other image type
-- [ ] validation using web [BIDS validator](https://bids-standard.github.io/bids-validator/)
+- [x] copy dicoms to mesocentre: [dicom2mesocentre.py](analysis_code/preproc/bids/dicom2mesocentre.py)
+- [x] check over dicoms: [dicom_editor.py](analysis_code/preproc/bids/dicom_editor.py)
+- [x] convert dicom to tar and delete dicoms from mesocentre: [dicom2tar.py](analysis_code/preproc/bids/dicom2tar.py)
+- [x] create bids dataset from tar files: [tar2bids.py](analysis_code/preproc/bids/tar2bids.py) (calls bids organisation in [bids_heuristic_file_bio7.py](analysis/code/preproc/bids/bids_heuristic_file_bio7.py))
+- [x] edition of json files for tasks and anonymysation: [json_editor.py](analysis_code/preproc/bids/json_editor.py)
+- [ ] create events files with R: [events_bio7_retin.R](), [events_bio7_faces.R]()
+- [ ] background deletion of T1w images: [mp2rage_genUniDen.py](analysis_code/preproc/bids/mp2rage_genUniDen.py) or [presurfer.py]()
+- [ ] deal with other files type: (penny seems to have it done somewhere)
+- [ ] deface participants t1w image: [deface_sbatch.py](analysis_code/preproc/bids/deface_sbatch.py)
+- [ ] deface participants other image type: 
+- [ ] validation using web: [BIDS validator](https://bids-standard.github.io/bids-validator/)
 
 #### Structural preprocessing-
 

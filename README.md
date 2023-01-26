@@ -16,23 +16,38 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 [pRFpy](https://github.com/VU-Cog-Sci/prfpy); 
 [pybest](https://github.com/lukassnoek/pybest);
 [FreeSurfer](https://surfer.nmr.mgh.harvard.edu/)
+[Psychtoolbox](http://psychtoolbox.org/)
 </br>
 
 ### To do
 - [ ] add argparse --help option to codes + modify home_sw_dir paths 
 - [ ] penny event files R + data > sourcedata 
+- [ ] penny - put experiment code in experiment_code/ folder
+- [x] martin - put experiment code in experiment_code/ folder
 - [ ] martin event files + data > sourcedata
 - [ ] martin presurfer python way 
-- [ ] mih jps participants json + tsv redcap > sourcedata 
-- [ ] martin finish setup mihaela jupyterlab 
+- [ ] mih jps participants tsv redcap > sourcedata 
+- [x] martin finish setup mihaela jupyterlab 
 - [ ] martin deface participants t1w image
+
+## Experiments
+---
+### Resting state task
+- To lauch the code: [expLauncher.m](experiment_code/prfexp7t/main/expLauncher.m)
+  - to run use Matlab and Psychtoolbox
+  - at first execution, generate the noise pattern stimuli by putting const.genStimuli to 1 (line 48)
+
+### Retinotopy task
+
+### Face task
+
 
 ## Data analysis
 ---
 
 ### Utilities
-- [ ] correct permissions for all project files [change_folder_access.py](analysis_code/utils/change_folder_access.py)
-- [ ] backup mesocentre project folder to server [backup_mesocentre.py](analysis_code/utils/backup_mesocentre.py)
+- [ ] correct permissions for all project files: [change_folder_access.py](analysis_code/utils/change_folder_access.py)
+- [ ] backup mesocentre project folder to server: [backup_mesocentre.py](analysis_code/utils/backup_mesocentre.py)
 
 ### Pre-processing
 
