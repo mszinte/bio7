@@ -21,7 +21,7 @@ python beh_events.py [main directory] [project name] [subject]
 -----------------------------------------------------------------------------------------
 Exemple:
 python beh_events.py /scratch/jstellmann/data/bio7 
-                     ~/projects/bio7/experiment_code/retin sub-8761
+                     ~/projects/bio7/experiment_code/data/retin sub-8761
 ------------------------------------------------------------------------------------------
 Written by Martin Szinte (mail@martinszinte.net)
 ----------------------------------------------------------------------------------------
@@ -30,14 +30,26 @@ Written by Martin Szinte (mail@martinszinte.net)
 # General imports
 import os
 import sys 
+import glob
+import ipdb
 
 # Get inputs
 bids_dir = sys.argv[1]
 beh_dir = sys.argv[2]
 subject = sys.argv[3]
 
-# Define transfer cmd from repo to sourcedata
-repo2sourcedata_cmd = "rsync -avuz {beh}/{sub}/ {bids}/{sub}".format(
-    bids=bids_dir, beh=beh_dir, sub=subject)
-print(repo2sourcedata_cmd)
-#os.sys(repo2sourcedata_cmd)
+# # Define transfer cmd from repo to sourcedata
+# repo2sourcedata_cmd = "rsync -avuz {beh}/{sub}/ {bids}/sourcedata/beh/retin/{sub}".format(
+#     bids=bids_dir, beh=beh_dir, sub=subject)
+# print(repo2sourcedata_cmd)
+# os.system(repo2sourcedata_cmd)
+
+# Move events file from sourcedata to bids
+sourcedata_bids_cmd= "rsync -avuz {bids}/sourcedata/beh/retin/{sub}/ses-02/func/ {bids}/{sub}/ses-02/func/".format(
+    bids=bids_dir, sub=subject)
+print(sourcedata_bids_cmd)
+os.system(sourcedata_bids_cmd)
+
+# add phase direction to events files
+file_list = glob.glob("{bids}/{sub}/ses-02/func/*_events.tsv".format(bids=bids_dir, sub=subject))
+ipdb.set_trace()
