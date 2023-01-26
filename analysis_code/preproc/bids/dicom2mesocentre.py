@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jan 13 15:32:52 2023
-# -*- coding: utf-8 -*-
 
 Created on Mon Jan  9 14:03:15 2023
 
@@ -27,8 +25,8 @@ To run:
 On laminar-mac 
 (or other computer with mesocentre rsa key setup)
 
->> cd ~/projects/bio7/analysis_code/preproc/
->> python3 bids/dicom2mesocentre.py [meso_proj_dir] [server_dcm_dir] [subject_number] [mesocentre_ID]
+>> cd ~/projects/bio7/analysis_code/preproc/bids
+>> python3 dicom2mesocentre.py [meso_proj_dir] [server_dcm_dir] [subject_number] [mesocentre_ID]
 -----------------------------------------------------------------------------------------
 
 """
@@ -38,6 +36,18 @@ On laminar-mac
 import os
 import sys
 import subprocess
+
+# Defining Help Messages
+#-----------------------
+import argparse
+parser = argparse.ArgumentParser(
+    description = 'Transfer dicoms to mesocentre. Outputs to sourcedata/dicoms. NB: If 1st transfer for a project, mkdir sourcedata/dicoms in project folder on mesocentre before running',
+    epilog = ' ')
+parser.add_argument('[meso_proj_dir]', help='path to data project directory on mesocentre. e.g., /scratch/{user}/data/{project}')
+parser.add_argument('[server_dcm_dir]', help='path to raw dicom data on cemerem server. e.g., /DATA_CEMEREM/data/protocols/terra/brain/bio7')
+parser.add_argument('[subject_number]', help='subject to analyse. OPTIONS: all (treating any untreated subjects), OR, treating specific subjects, accepted formats: 8762, sub-8762, 876-2')
+parser.add_argument('[meso_user]', help='your mesocentre username. e.g., ptilsley')
+parser.parse_args()
 
 # Get inputs
 # ----------
@@ -58,7 +68,7 @@ else:
 #----------------------------
 meso_src_dir = os.path.join(meso_proj_dir,"sourcedata")
 
-# Create dicom dir meso
+# Define dicom dir meso
 # ---------------------
 meso_dir_dicoms = os.path.join(meso_src_dir,"dicoms")
 
