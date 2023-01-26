@@ -9,16 +9,16 @@ change_folder_access.py
 script location: projects/bio7/analysis_code/preproc/bids/change_folder_access.py
 -----------------------------------------------------------------------------------------
 Goal of the script:
-Make folders accessible to whole team
+Make folders accessible to whole bio7 team. Defaults to data/bio7 folder. Change input -i
 -----------------------------------------------------------------------------------------
-Input(s):
-sys.argv[1]: folder to change access for /scratch/jstellmann/data/bio7
+Optional input(s):
+-i, folder to change access for. Default if empty: /scratch/jstellmann/data/bio7
 -----------------------------------------------------------------------------------------
 To run:
 On mesocentre
 
->> cd ~/projects/bio7/analysis_code/preproc/
->> python bids/change_folder_access.py
+>> cd ~/projects/bio7/analysis_code/preproc/utils
+>> python change_folder_access.py
 -----------------------------------------------------------------------------------------
 """
 
@@ -26,9 +26,18 @@ On mesocentre
 # ---------------
 import subprocess
 
+# Defining Help Messages
+#-----------------------
+import argparse
+parser = argparse.ArgumentParser(
+    description = 'Correct permissions for folders and contents',
+    epilog = ' ')
+parser.add_argument('-i', '--input', default="/scratch/jstellmann/data/bio7/", help='path to data project directory on mesocentre or other to change permissions for. e.g., /scratch/{user}/data/{project}')
+args = parser.parse_args()
+
 # Get inputs
 # ----------
-input_dir = "/scratch/jstellmann/data/bio7/"
+input_dir = args.input
 
 #take out the w (write files) and r (read files) for all users, -R does for all folders below
 subprocess.call(["chmod", "-R", "a+wrx", input_dir])
