@@ -13,15 +13,14 @@ Goal of the script:
 Create .tar file from dicoms on mesocentre
 -----------------------------------------------------------------------------------------
 Input(s):
-sys.argv[1]: mesocentre project directory (e.g. /scratch/ptilsley/data/bio7)
-sys.argv[2]: mesocentre softwares directory (e.g. /home/ptilsley/softwares)
-sys.argv[3]: individual subject level or automatic all remaining (e.g., sub-8761 or 8761, all)
+sys.argv[1]: mesocentre project directory (e.g. /scratch/jstellmann/data/bio7)
+sys.argv[2]: individual subject level or automatic all remaining (e.g., sub-8761 or 8761, all)
 -----------------------------------------------------------------------------------------
 To run:
 On mesocentre
 
->> cd ~/projects/bio7/analysis_code/preproc/
->> python bids/dicom2tar.py [meso_proj_dir] [meso_home_sw_dir] [subject_number]
+>> cd ~/projects/bio7/analysis_code/preproc/bids
+>> python dicom2tar.py [meso_proj_dir] [subject_number]
 -----------------------------------------------------------------------------------------
 """
 
@@ -31,11 +30,19 @@ import os
 import sys
 import subprocess
 
+# Defining Help Messages
+#-----------------------
+import argparse
+parser = argparse.ArgumentParser(
+    description = 'Convert dicoms to .tar files. Outputs to sourcedata/tarfiles/{subject}_{session}.tar',
+    epilog = ' ')
+parser.add_argument('[meso_proj_dir]', help='path to data project directory on mesocentre. e.g., /scratch/{user}/data/{project}')
+parser.parse_args()
+
 # Get inputs
 # ----------
 meso_proj_dir = sys.argv[1]
-meso_home_sw_dir = sys.argv[2]
-subject_level = sys.argv[3]
+subject_level = sys.argv[2]
 
 # Check inputs
 # ------------
@@ -44,23 +51,21 @@ if os.path.isdir(meso_proj_dir):
 else:
     print("meso sourcedata input doesnt exist")
     exit()
-
-
-if os.path.isdir(meso_home_sw_dir):
-    print("meso software input OK")
-else:
-    print("meso software input doesnt exist")
-    exit()
  
-# Define sourcedirectory
-#-----------------------
-meso_src_dir = os.path.join(meso_proj_dir,"sourcedata")    
+# Define homedir + sourcedirectory
+#---------------------------------
+meso_src_dir = os.path.join(meso_proj_dir,"sourcedata")
+meso_home_dir = os.path.expanduser('~')
+
+# Define code directories
+#-------------------------
+meso_code_dir = os.path.join(meso_proj_dir,"code")
+meso_singularity_dir = os.path.join(meso_code_dir,"singularity")
     
 # Finding dicom2tar sif
 #----------------------
-
-dicom2tar_file = [sif for sif in os.listdir(meso_home_sw_dir) if "dicom2tar" in sif and sif.endswith(".sif")]
-dicom2tar_path = os.path.join(meso_home_sw_dir, dicom2tar_file[0])
+dicom2tar_file = [sif for sif in os.listdir(meso_singularity_dir) if "dicom2tar" in sif and sif.endswith(".sif")]
+dicom2tar_path = os.path.join(meso_singularity_dir, dicom2tar_file[0])
                   
 # Create tarfile dir meso
 # -----------------------
@@ -121,7 +126,7 @@ if subj == "all":
                 # Convert dicom to tar file
                 #--------------------------
                 dicfiles = os.path.join(s_dicompath, dicdir)
-                subprocess.call(["singularity","run", "-e", "-B", meso_proj_dir + "," + meso_home_sw_dir, dicom2tar_path, dicfiles, meso_dir_tarfiles])
+                subprocess.call(["singularity","run", "-e", "-B", meso_proj_dir + "," + meso_home_dir, dicom2tar_path, dicfiles, meso_dir_tarfiles])
                 
                 # Rename tar files sub_ses
                 #-------------------------
@@ -191,7 +196,7 @@ else:
             # Convert dicom to tar file
             #--------------------------
             dicfiles = os.path.join(s_dicompath, dicdir)
-            subprocess.call(["singularity","run", "-e", "-B", meso_proj_dir + "," + meso_home_sw_dir, dicom2tar_path, dicfiles, meso_dir_tarfiles])
+            subprocess.call(["singularity","run", "-e", "-B", meso_proj_dir + "," + meso_home_dir, dicom2tar_path, dicfiles, meso_dir_tarfiles])
             
             # Rename tar files sub_ses
             #-------------------------
