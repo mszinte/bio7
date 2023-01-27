@@ -24,12 +24,13 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 - [x] martin - put experiment code in experiment_code/ folder
 - [x] martin event files + data > sourcedata
 - [x] martin finish setup mihaela jupyterlab 
-- [ ] martin setup the fmriprep codes
+- [x] martin setup the fmriprep codes
+- [ ] martin create _event.json file for retin
+- [ ] martin deface participants t1w image
 - [ ] add argparse --help option to codes + modify home_sw_dir paths 
 - [ ] penny - put experiment code in experiment_code/ folder for face and resting state
 - [ ] penny presurfer
 - [ ] mih jps participants tsv redcap > sourcedata 
-- [ ] martin deface participants t1w image
 - [ ] penny ? create backup utility function
 
 ## Experiments
@@ -70,7 +71,7 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 #### Structural preprocessing-
 
 - [ ] manual definition of lesion mapping: [lesion_mapping.py](analysis_code/preproc/anatomical/lesion_mapping.py)
-- [ ] fMRIprep with anat-only: [fmriprep_sbatch.py](analysis_code/preproc/functional/fmriprep_sbatch.py)
+- [x] fMRIprep with anat-only: [fmriprep_sbatch.py](analysis_code/preproc/functional/fmriprep_sbatch.py)
 - [x] create sagital view video before and after manual edit [sagital_view.py](analysis_code/preproc/anatomical/sagital_view.py)
 - [x] manual edit of brain segmentation [pial_edits.sh](analysis_code/preproc/anatomical/sagital_view.py)
 - [x] re-run freesurfer to include the manual change of the pial surface: [freesurfer_pial.py](analysis_code/preproc/anatomical/freesurfer_pial.py)
@@ -78,7 +79,7 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 - [ ] create pycortex dataset [to_be_define_soon](/asdasd/)
 
 #### Functional preprocessing
-- [ ] fMRIprep [fmriprep_sbatch.py](analysis_code/preproc/functional/fmriprep_sbatch.py)
+- [x] fMRIprep [fmriprep_sbatch.py](analysis_code/preproc/functional/fmriprep_sbatch.py)
 - [ ] slow drift correction and z-score [pybest_sbatch.py](analysis_code/preproc/functional/pybest_sbatch.py)
 
 ### Post-processing

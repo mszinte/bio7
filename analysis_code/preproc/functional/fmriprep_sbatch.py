@@ -23,7 +23,7 @@ preprocessed files
 -----------------------------------------------------------------------------------------
 To run:
 1. cd to function
->> cd ~/projects/bio7/preproc/
+>> cd ~/projects/bio7/analysis_code/preproc/functional
 2. run python command
 python fmriprep_sbatch.py [main directory] [project name] [subject num]
                           [hour proc.] [anat only] [aroma] [fmapfree] 
