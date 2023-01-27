@@ -58,7 +58,7 @@ if const.expStart == 0
 else
     const.cond1         =   const.cond_run_order(const.runNum,1);
 end
-const.cond1_txt       =  'retin';
+const.cond1_txt       =  'retin_dir-PA';
 
 fprintf(1,'\n\tTask: %s\n',const.cond1_txt);
 
