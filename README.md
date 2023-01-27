@@ -25,7 +25,7 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 - [x] martin event files + data > sourcedata
 - [x] martin finish setup mihaela jupyterlab 
 - [x] martin setup the fmriprep codes
-- [ ] martin create _event.json file for retin
+- [x] martin create _event.json file for retin
 - [ ] martin deface participants t1w image
 - [ ] add argparse --help option to codes + modify home_sw_dir paths 
 - [ ] penny - put experiment code in experiment_code/ folder for face and resting state
