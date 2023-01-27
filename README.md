@@ -20,33 +20,34 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 </br>
 
 ### To do
-- [ ] add argparse --help option to codes + modify home_sw_dir paths 
-- [ ] penny event files R + data > sourcedata 
-- [ ] penny - put experiment code in experiment_code/ folder
+- [x] penny event files R + data > sourcedata + martin change them in subfunctions
 - [x] martin - put experiment code in experiment_code/ folder
-- [ ] martin event files + data > sourcedata
-- [ ] martin presurfer python way 
-- [ ] mih jps participants tsv redcap > sourcedata 
+- [x] martin event files + data > sourcedata
 - [x] martin finish setup mihaela jupyterlab 
+- [ ] martin setup the fmriprep codes
+- [ ] add argparse --help option to codes + modify home_sw_dir paths 
+- [ ] penny - put experiment code in experiment_code/ folder for face and resting state
+- [ ] penny presurfer
+- [ ] mih jps participants tsv redcap > sourcedata 
 - [ ] martin deface participants t1w image
+- [ ] penny ? create backup utility function
 
 ## Experiments
 ---
 ### Resting state task
+
+### Retinotopy task
 - To lauch the code: [expLauncher.m](experiment_code/prfexp7t/main/expLauncher.m)
   - to run use Matlab and Psychtoolbox
   - at first execution, generate the noise pattern stimuli by putting const.genStimuli to 1 (line 48)
 
-### Retinotopy task
-
 ### Face task
-
 
 ## Data analysis
 ---
 
 ### Utilities
-- [ ] correct permissions for all project files: [change_folder_access.py](analysis_code/utils/change_folder_access.py)
+- [x] utility function ot correct file permissions: [permission.py](analysis_code/utils/permission.py)
 - [ ] backup mesocentre project folder to server: [backup_mesocentre.py](analysis_code/utils/backup_mesocentre.py)
 
 ### Pre-processing
@@ -60,7 +61,8 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 - [x] create bids dataset from tar files: [tar2bids.py](analysis_code/preproc/bids/tar2bids.py) (calls bids organisation in [bids_heuristic_file_bio7.py](analysis/code/preproc/bids/bids_heuristic_file_bio7.py))
 - [x] edition of json files for tasks and anonymysation: [json_editor.py](analysis_code/preproc/bids/json_editor.py)
 - [x] update participants.tsv: [tsv_editor.py](analysis_code/preproc/bids/tsv_editor.py)
-- [ ] create events files with R: [events_bio7_retin.R](), [events_bio7_faces.R]()
+- [x] move events files of retin task in BIDS folder: [beh_events.py](analysis_code/preproc/bids/beh_events.py)
+- [ ] create events files of face task with R: [events_bio7_retin.R](), [events_bio7_faces.R]()
 - [ ] background deletion of T1w images: [mp2rage_genUniDen.py](analysis_code/preproc/bids/mp2rage_genUniDen.py) or [presurfer.py]()
 - [ ] deface participants anatomical image: [deface_sbatch.py](analysis_code/preproc/bids/deface_sbatch.py)
 - [ ] BIDS validation : [BIDS validator](https://bids-standard.github.io/bids-validator/)
@@ -84,7 +86,6 @@ Penelope Tilsley, Mihaela Nicolescu, Martin Szinte & Jan-Patrick Stellmann
 #### GLM analysis
 - to be defined later
 - idea : https://fitlins.readthedocs.io/en/latest/usage.html
-
 
 #### PRF analysis
 - [ ] average and leave-one-out averaging of runs together [preproc_end.py](analysis_code/preproc/functional/preproc_end.py)
