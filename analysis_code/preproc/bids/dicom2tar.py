@@ -37,6 +37,7 @@ parser = argparse.ArgumentParser(
     description = 'Convert dicoms to .tar files. Outputs to sourcedata/tarfiles/{subject}_{session}.tar',
     epilog = ' ')
 parser.add_argument('[meso_proj_dir]', help='path to data project directory on mesocentre. e.g., /scratch/{user}/data/{project}')
+parser.add_argument('[subject_number]', help='subject to analyse. OPTIONS: all (treating any untreated subjects), OR, treating specific subjects, accepted formats: 8762, sub-8762, 876-2')
 parser.parse_args()
 
 # Get inputs
