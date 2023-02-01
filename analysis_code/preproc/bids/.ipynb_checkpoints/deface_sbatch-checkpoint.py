@@ -15,15 +15,12 @@ sys.argv[5]: server job or not (1 = server, 0 = terminal)
 Output(s):
 Defaced images
 -----------------------------------------------------------------------------------------
-To run:
-1. cd to function
->> cd /home/mszinte/projects/stereo_prf/mri_analysis/
-2. run python command
-python preproc/deface_sbatch.py [main directory] [project name] [subject num] 
-                                [overwrite] [server_or_not] 
+To run: run python commands
+>> cd ~/projects/stereo_prf/analysis_code/preproc/bids/
+>> python deface_sbatch.py [main directory] [project name] [subject num] [overwrite] [server]
 -----------------------------------------------------------------------------------------
 Exemple:
-python analysis_code/preproc/deface_sbatch.py /scratch/mszinte/data stereo_prf sub-01 0 0
+python deface_sbatch.py /scratch/mszinte/data stereo_prf sub-01 1 0
 -----------------------------------------------------------------------------------------
 Written by Martin Szinte (martin.szinte@gmail.com)
 -----------------------------------------------------------------------------------------
@@ -33,7 +30,6 @@ Written by Martin Szinte (martin.szinte@gmail.com)
 import sys
 import os
 import pdb
-deb = pdb.set_trace
 
 # inputs
 main_dir = sys.argv[1]
@@ -51,7 +47,7 @@ except: pass
 slurm_cmd = """\
 #!/bin/bash
 #SBATCH -p skylake
-#SBATCH -A b161
+#SBATCH -A a306
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task={nb_procs}
 #SBATCH --time={hour_proc}:00:00

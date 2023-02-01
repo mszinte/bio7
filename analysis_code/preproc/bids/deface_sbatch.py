@@ -13,12 +13,21 @@ sys.argv[3]: run with slurm server (0 = no: use terminal, 1 = yes: use server)
 Output(s):
 Defaced images
 -----------------------------------------------------------------------------------------
+<<<<<<< HEAD
 To run:
 cd /home/mszinte/projects/stereo_prf/mri_analysis/preproc/
 python deface_sbatch.py [meso_proj_dir] [subject_number] [slurm]
 -----------------------------------------------------------------------------------------
 Example:
 python deface_sbatch.py /scratch/jstellmann/data/bio7 sub-8761 1
+=======
+To run: run python commands
+>> cd ~/projects/stereo_prf/analysis_code/preproc/bids/
+>> python deface_sbatch.py [main directory] [project name] [subject num] [overwrite] [server]
+-----------------------------------------------------------------------------------------
+Exemple:
+python deface_sbatch.py /scratch/mszinte/data stereo_prf sub-01 1 0
+>>>>>>> eaee670c14dd7234f7bc3d374c005165e7e24c17
 -----------------------------------------------------------------------------------------
 Written by Martin Szinte (martin.szinte@gmail.com), Penelope Tilsley
 -----------------------------------------------------------------------------------------
@@ -29,7 +38,6 @@ import sys
 import os
 import subprocess
 import pdb
-deb = pdb.set_trace
 
 # Defining Help Messages
 #-----------------------
