@@ -13,21 +13,19 @@ sys.argv[3]: run with slurm server (0 = no: use terminal, 1 = yes: use server)
 Output(s):
 Defaced images
 -----------------------------------------------------------------------------------------
-<<<<<<< HEAD
 To run:
-cd /home/mszinte/projects/stereo_prf/mri_analysis/preproc/
-python deface_sbatch.py [meso_proj_dir] [subject_number] [slurm]
------------------------------------------------------------------------------------------
-Example:
-python deface_sbatch.py /scratch/jstellmann/data/bio7 sub-8761 1
-=======
-To run: run python commands
->> cd ~/projects/stereo_prf/analysis_code/preproc/bids/
->> python deface_sbatch.py [main directory] [project name] [subject num] [overwrite] [server]
------------------------------------------------------------------------------------------
-Exemple:
+Example prf:
 python deface_sbatch.py /scratch/mszinte/data stereo_prf sub-01 1 0
->>>>>>> eaee670c14dd7234f7bc3d374c005165e7e24c17
+
+cd /home/mszinte/projects/stereo_prf/mri_analysis/preproc/
+python bids/deface_sbatch.py [main directory] [project name] [subject num] [overwrite] [server]
+-----------------------------------------------------------------------------------------
+To run:
+Example BIO7:
+python deface_sbatch.py /scratch/jstellmann/data/bio7 sub-8761 1
+
+cd ~/projects/bio7/analysis_code/preproc/bids/
+python deface_sbatch.py [meso_proj_dir] [subject_number] [slurm]
 -----------------------------------------------------------------------------------------
 Written by Martin Szinte (martin.szinte@gmail.com), Penelope Tilsley
 -----------------------------------------------------------------------------------------
@@ -37,7 +35,7 @@ Written by Martin Szinte (martin.szinte@gmail.com), Penelope Tilsley
 import sys
 import os
 import subprocess
-import pdb
+import shutil
 
 # Defining Help Messages
 #-----------------------
@@ -49,21 +47,6 @@ parser.add_argument('[meso_proj_dir]', help='path to project data directory on m
 parser.add_argument('[subject_number]', help='subject to analyse. OPTIONS: treating specific subjects, accepted formats: 8762, sub-8762, 876-2')
 parser.add_argument('[slurm]', help='user slurm server 0 = no, 1 = yes')
 parser.parse_args()
-
-## Check_install
-#---------------
-rc = subprocess.call(['which', 'pydeface'])
-if rc == 0:
-    print('pydeface installed!')
-else:
-    try: 
-        print('Trying pip install pydeface')
-        subprocess.call(['pip', 'install', 'pydeface'])
-    except:
-        print('Didnt manage to install?')
-    else:
-        print('pydeface installed') 
-
 
 # Get inputs
 # ----------
@@ -84,6 +67,37 @@ if os.path.isdir(meso_proj_dir):
 else:
     print("meso project input doesnt exist")
     exit()
+
+## Check_install
+#---------------        
+dependencies_pipinstall = ['pydeface', 'nibabel', 'nipype']
+
+for soft in dependencies_pipinstall:
+
+    if shutil.which(soft) is None:
+        try: 
+            print('Trying to install {}'.format(soft)) 
+            subprocess.call(['pip', 'install', soft])
+        except:
+            print('Didnt manage to install {}?'.format(soft))
+    else:
+        print('{} already installed!'.format(soft))
+        
+dependencies_pyinstall = ['fsl']
+
+for inst in dependencies_pyinstall:
+    if shutil.which(inst) is None:
+        try:
+            print('Trying to install {}, may take a while..'.format(inst))
+            inst_folder = '{}/code/{}'.format(meso_proj_dir, inst)
+            inst_script = [fl for fl in os.listdir(inst_folder) if inst in fl and fl.endswith('.py')]
+            inst_path = os.path.join(inst_folder, inst_script)
+            subprocess.call(['python', inst_path])
+        except:
+            print('Didnt manage to install {}?'.format(inst))
+    else:
+        print('{} already installed!'.format(inst))
+
     
 # Getting subject number
 #----------------------- 
@@ -110,8 +124,11 @@ os.makedirs(meso_log_dir,exist_ok=True)
 
 ## Defining SLURM
 #----------------
-hour_proc = 4
+hour_proc = 1
 nb_procs = 8
+
+# Write slurm command cond
+slurmwrite = 1
 
 # define SLURM cmd
 slurm_cmd = """\
@@ -123,7 +140,9 @@ slurm_cmd = """\
 #SBATCH --time={hour_proc}:00:00
 #SBATCH -e {meso_log_dir}/{subject}_deface_%N_%j_%a.err
 #SBATCH -o {meso_log_dir}/{subject}_deface_%N_%j_%a.out
-#SBATCH -J {subject}_deface\n\n""".format(nb_procs=nb_procs, hour_proc=hour_proc, subject=subject, meso_log_dir=meso_log_dir)
+#SBATCH -J sub-{subject}_deface\n\n""".format(nb_procs=nb_procs, hour_proc=hour_proc, subject=subject, meso_log_dir=meso_log_dir)
+
+
 
 
 ## Finding T1 images
@@ -169,7 +188,7 @@ for it in sessions:
             applypath = [tmp_anat_dir + '/' + img for img in apply_to_images] 
             apply_filepath = ' '.join(applypath)
 
-            deface_cmd = "pydeface {uni} --cost normmi --applyto {apply} --force --verbose\n".format(uni = uni_image, apply = apply_filepath)
+            deface_cmd = "pydeface {uni} --cost normmi --applyto {apply} --force --verbose\n".format(uni = uni_filepath, apply = apply_filepath)
 
         elif len(uni_image) == 0 and len(apply_to_images) > 0:
             print("please check sub-" + tmp_anat_dir + " no UNI but other anat images?: " + str(apply_to_images))
@@ -194,10 +213,15 @@ for it in sessions:
             # sh folder & file
             sh_folder = "{}/code/shell_jobs".format(meso_proj_dir)
             os.makedirs(sh_folder,exist_ok=True)
-            sh_file = "{}/sub-{}_{}_deface.sh".format(sh_folder,subject, it)
+            sh_file = "{}/sub-{}_deface.sh".format(sh_folder,subject)
 
-            of = open(sh_file, 'w')
-            if server_in: of.write(slurm_cmd)
+            if server_in == 1 and slurmwrite == 1:
+                of = open(sh_file, 'w')
+                of.write(slurm_cmd)
+                slurmwrite = 0
+                of.close()
+            
+            of = open(sh_file, 'a')
             of.write(deface_cmd)    
             of.close()
 
@@ -205,10 +229,10 @@ for it in sessions:
             shpr = open(sh_file, 'r').read()
             print(shpr)
 
-            # Run or submit jobs
-            if server_in:
-                os.chdir(meso_log_dir)
-                print("Submitting {} to queue".format(sh_file))
-                os.system("sbatch {}".format(sh_file))
-            else:
-                os.system("sh {}".format(sh_file))
+# Run or submit jobs
+if server_in:
+    os.chdir(meso_log_dir)
+    print("Submitting {} to queue".format(sh_file))
+    os.system("sbatch {}".format(sh_file))
+else:
+    os.system("sh {}".format(sh_file))
