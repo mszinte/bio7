@@ -118,6 +118,25 @@ os.makedirs(meso_log_dir,exist_ok=True)
 #------------------------
 tmp_output_dir = os.path.join(meso_proj_dir, "derivatives/presurfer_tmp")
 
+## Arrange outputs
+#-----------------    
+if test_mode == 0:
+    
+    ## Copying files from tmp/presurfer
+    ##----------------------------------
+    presurfer_outputs = "/tmp/presurfer/sub-{}".format(subject)
+    output_dir = os.path.join(meso_proj_dir, "derivatives/presurfer")
+    os.makedirs(output_dir,exist_ok=True)
+   
+    cp_cmd = "cp -R {} {}\n".format(presurfer_outputs, output_dir)
+    rm_tmp_cmd = "rm -R {}\n".format(tmp_output_dir)
+    
+    org_script = "{}/projects/{}/analysis_code/preproc/bids/org_presurfer.py".format(meso_home_dir, projname)
+    org_cmd = "python {} {} {}".format(org_script, meso_proj_dir, subj)
+    
+else:
+    echo_cmd = "echo run as dry-run, rerun as actual run with 0 if all ok"
+
 
 ## Defining SLURM
 #----------------
@@ -132,15 +151,15 @@ slurm_cmd = """\
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task={nb_procs}
 #SBATCH --time={hour_proc}:00:00
-#SBATCH -e {meso_log_dir}/{subject}_presurfer_%N_%j_%a.err
-#SBATCH -o {meso_log_dir}/{subject}_presurfer_%N_%j_%a.out
-#SBATCH -J {subject}_presurf\n\n""".format(nb_procs=nb_procs, hour_proc=hour_proc, subject=subject, meso_log_dir=meso_log_dir)
+#SBATCH -e {meso_log_dir}/sub-{subject}_presurfer_%N_%j_%a.err
+#SBATCH -o {meso_log_dir}/sub-{subject}_presurfer_%N_%j_%a.out
+#SBATCH -J sub-{subject}_presurf\n\n""".format(nb_procs=nb_procs, hour_proc=hour_proc, subject=subject, meso_log_dir=meso_log_dir)
 
 # sh folder & file
 sh_folder = "{}/code/shell_jobs".format(meso_proj_dir)
 try: os.makedirs(sh_folder)
 except: pass
-sh_file = "{}/{}_presurf.sh".format(sh_folder,subject)
+sh_file = "{}/sub-{}_presurf.sh".format(sh_folder,subject)
 
 of = open(sh_file, 'w')
 if server_in: of.write(slurm_cmd)
@@ -148,9 +167,14 @@ of.write("module load userspace/all\n")
 of.write("module load singularity/3.5.1\n")
 if test_mode == 0: 
     pres_cmd = "python {mp}/code/presurfer-smk-master/presurfer/run.py {mp} {od} participant --participant_label {s} --cores 1 --use-singularity\n".format(mp=meso_proj_dir, od=tmp_output_dir, s=subject)
+    of.write(pres_cmd)
+    of.write(cp_cmd)
+    of.write(rm_tmp_cmd)
+    of.write(org_cmd)
 elif test_mode == 1:
     pres_cmd = "python {mp}/code/presurfer-smk-master/presurfer/run.py {mp} {od} participant --participant_label {s} --cores 1 --use-singularity -np\n".format(mp=meso_proj_dir, od=tmp_output_dir, s=subject)
-of.write(pres_cmd)    
+    of.write(pres_cmd)
+    of.write(echo_cmd)
 of.close()
 
 print("Created " + sh_file + " with following commands: ")
@@ -167,95 +191,3 @@ if server_in:
     os.system("sbatch {}".format(sh_file))
 else:
     os.system("sh {}".format(sh_file))
-
-## Arrange outputs
-#-----------------    
-if test_mode == 0:
-    
-    ## Copying files from tmp/presurfer
-    ##----------------------------------
-    presurfer_outputs = "/tmp/presurfer/sub-{}".format(subject)
-    output_dir = os.path.join(meso_proj_dir, "derivatives/presurfer_pytest")
-    os.makedirs(output_dir,exist_ok=True)
-    
-    sess = os.listdir(presurfer_outputs)
-    sess = sess[0]
-
-    print("Copying presurfer tmp files to " + output_dir)
-    subprocess.call(['cp', '-R', presurfer_outputs, output_dir])
-
-
-    ## Organising anat outputs
-    ##------------------------
-    presurfer_anat_dir = os.path.join(output_dir, "sub-{}/{}/anat/".format(subject, sess))
-    os.makedirs(presurfer_anat_dir,exist_ok=True)
-
-    presurfer_output_lvl = "{}/sub-{}/{}/".format(output_dir, subject, sess)
-    ps_dir = [ps for ps in os.listdir(presurfer_output_lvl) if ps.endswith('presurfer')]
-    ps_dir = ps_dir[0]
-
-    presurfer_UNI_dir = "{}/sub-{}/{}/{}/presurf_UNI/".format(output_dir, subject, sess, ps_dir)
-    presurfer_INV_dir = "{}/sub-{}/{}/{}/presurf_INV2/".format(output_dir, subject, sess, ps_dir)
-    presurfer_MPRAGE_dir = "{}/sub-{}/{}/{}/presurf_MPRAGEise/".format(output_dir, subject, sess, ps_dir)
-
-
-    ## Copying stripmask
-    ##------------------
-    print("Copying relevant files to " + presurfer_anat_dir)
-
-    stripmask = [sm for sm in os.listdir(presurfer_INV_dir) if "mask" in sm]
-
-    for elemstrip in stripmask:
-
-        spl = elem.split('_')
-        spl.remove('INV2')
-        stripname = '_'.join(spl)
-
-        stripmask_orig = os.path.join(presurfer_INV_dir,elemstrip)
-        stripmask_new = os.path.join(presurfer_anat_dir,stripname)
-        subprocess.call(['cp', stripmask_orig, stripmask_new])
-
-    ## Copying brainmask and wmmask
-    ##-----------------------------
-    brainmasks = [sm for sm in os.listdir(presurfer_UNI_dir) if "mask" in sm]
-
-    for elem in brainmasks:
-
-        spl = elem.split('_')
-        spl.remove('UNI')
-        spl.remove('MPRAGEised')
-        maskname = '_'.join(spl)
-
-        brainmask_orig = os.path.join(presurfer_UNI_dir,elem)
-        brainmask_new = os.path.join(presurfer_anat_dir,maskname)
-        subprocess.call(['cp', brainmask_orig, brainmask_new])
-
-    ## Copying T1w
-    ##------------
-    T1w = [sm for sm in os.listdir(presurfer_MPRAGE_dir) if "MPRAGEised" in sm]
-
-    for elemt1 in T1w:
-
-        spl = elemt1.split('_')
-        spl[-1] = 'T1w.nii'
-        spl.remove('UNI')
-        T1wname = '_'.join(spl)
-
-        T1w_orig = os.path.join(presurfer_MPRAGE_dir,elemt1)
-        T1w_new = os.path.join(presurfer_anat_dir,T1wname)
-        subprocess.call(['cp', T1w_orig, T1w_new])
-
-    ## Removing tmp folders
-    ##---------------------
-    subprocess.call(['rm', '-r', presurfer_outputs])
-    subprocess.call(['rm', '-r', tmp_output_dir])
-    
-else:
-    print('run performed as dry-run, rerun as normal run with 0 if all ok')
-    pass
-
-
-sys.path.append("{}/projects/{}/analysis_code/utils".format(meso_home_dir, projname)
-from permission import change_file_mod, change_file_group
-change_file_mod(meso_proj_dir)
-change_file_group(meso_proj_dir)
