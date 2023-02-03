@@ -36,6 +36,7 @@ import sys
 import os
 import subprocess
 import shutil
+import csv
 
 # Defining Help Messages
 #-----------------------
@@ -124,7 +125,7 @@ os.makedirs(meso_log_dir,exist_ok=True)
 
 ## Defining SLURM
 #----------------
-hour_proc = 1
+hour_proc = 3
 nb_procs = 8
 
 # Write slurm command cond
@@ -138,8 +139,8 @@ slurm_cmd = """\
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task={nb_procs}
 #SBATCH --time={hour_proc}:00:00
-#SBATCH -e {meso_log_dir}/{subject}_deface_%N_%j_%a.err
-#SBATCH -o {meso_log_dir}/{subject}_deface_%N_%j_%a.out
+#SBATCH -e {meso_log_dir}/sub-{subject}_deface_%N_%j_%a.err
+#SBATCH -o {meso_log_dir}/sub-{subject}_deface_%N_%j_%a.out
 #SBATCH -J sub-{subject}_deface\n\n""".format(nb_procs=nb_procs, hour_proc=hour_proc, subject=subject, meso_log_dir=meso_log_dir)
 
 
@@ -153,6 +154,8 @@ sessions = [ses for ses in os.listdir(subj_dir) if "ses" in ses]
 for it in sessions:
     tmp_sess_dir = os.path.join(subj_dir, it)
     tmp_anat_dir = os.path.join(tmp_sess_dir, "anat")
+    backupdir = "{}/sourcedata/pydeface/sub-{}/{}/anat/".format(meso_proj_dir, subject, it)
+
     
     if os.path.exists(tmp_anat_dir):
         anat_scans = [scn for scn in os.listdir(tmp_anat_dir) if scn.endswith("FLAWS.nii.gz") or scn.endswith("MP2RAGE.nii.gz")]
@@ -172,10 +175,15 @@ for it in sessions:
 
             deface = 'yes'
             uni_filepath = os.path.join(tmp_anat_dir, uni_image[0])
+            uni_filepath_newname = uni_filepath.replace('.nii.gz', '_defaced.nii.gz')
 
             applyto = 'no'
 
             deface_cmd = "pydeface {uni} --cost normmi --force --verbose\n".format(uni = uni_filepath)
+            mkdir_cmd = "mkdir -p {}\n".format(backupdir)
+            cp_cmd = "cp {} {} {}\n".format(uni_filepath, uni_filepath_newname, backupdir)
+            rn_cmd = "rename _defaced.nii.gz .nii.gz {}/*\n".format(tmp_anat_dir)
+            
 
         elif len(uni_image) == 1 and len(apply_to_images) > 0:
             print("T1 UNI image to deface in " + tmp_anat_dir)
@@ -183,13 +191,20 @@ for it in sessions:
 
             deface = 'yes'
             uni_filepath = os.path.join(tmp_anat_dir, uni_image[0])
+            uni_filepath_newname = uni_filepath.replace('.nii.gz', '_defaced.nii.gz')
 
             applyto = 'yes'
             applypath = [tmp_anat_dir + '/' + img for img in apply_to_images] 
             apply_filepath = ' '.join(applypath)
+            applypath_newname = [s.replace('.nii.gz', '_defaced.nii.gz') for s in applypath]
+            apply_filepath_newname = ' '.join(applypath_newname)
+    
 
-            deface_cmd = "pydeface {uni} --cost normmi --applyto {apply} --force --verbose\n".format(uni = uni_filepath, apply = apply_filepath)
-
+            deface_cmd = "pydeface {uni} --cost normmi --applyto {apply} --force --verbose\n".format(uni = uni_filepath, apply = apply_filepath)       
+            mkdir_cmd = "mkdir -p {}\n".format(backupdir)
+            cp_cmd = "cp {} {} {} {} {}\n".format(uni_filepath, uni_filepath_newname, apply_filepath, apply_filepath_newname, backupdir)
+            rn_cmd = "rename _defaced.nii.gz .nii.gz {}/*\n".format(tmp_anat_dir)
+            
         elif len(uni_image) == 0 and len(apply_to_images) > 0:
             print("please check sub-" + tmp_anat_dir + " no UNI but other anat images?: " + str(apply_to_images))
             deface = 'no'
@@ -222,7 +237,10 @@ for it in sessions:
                 of.close()
             
             of = open(sh_file, 'a')
-            of.write(deface_cmd)    
+            of.write(deface_cmd)  
+            of.write(mkdir_cmd)
+            of.write(cp_cmd)
+            of.write(rn_cmd)
             of.close()
 
             print("Created " + sh_file + " with following commands: ")
