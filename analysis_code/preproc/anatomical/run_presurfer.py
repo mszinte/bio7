@@ -131,7 +131,7 @@ if test_mode == 0:
     cp_cmd = "cp -R {} {}\n".format(presurfer_outputs, output_dir)
     rm_tmp_cmd = "rm -R {}\n".format(tmp_output_dir)
     
-    org_script = "{}/projects/{}/analysis_code/preproc/bids/org_presurfer.py".format(meso_home_dir, projname)
+    org_script = "{}/projects/{}/analysis_code/preproc/anatomical/org_presurfer.py".format(meso_home_dir, projname)
     org_cmd = "python {} {} {}".format(org_script, meso_proj_dir, subj)
     
 else:
