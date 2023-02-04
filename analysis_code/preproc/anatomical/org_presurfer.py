@@ -11,7 +11,7 @@ org_presurfer.py
 script location: projects/bio7/analysis_code/preproc/bids/org_presurfer.py
 -----------------------------------------------------------------------------------------
 Goal of the script:
-Create bids directory from tarfiles on mesocentre
+Organise presurfer outputs and setup for fsl/itk lesion filling 
 -----------------------------------------------------------------------------------------
 Input(s):
 sys.argv[1]: mesocentre project data directory (e.g. /scratch/jstellmann/data/bio7)
@@ -33,8 +33,8 @@ import subprocess
 #-----------------------
 import argparse
 parser = argparse.ArgumentParser(
-    description = 'Create brainmask, stripmask, wmmask and T1w from MP2RAGE UNI and INV2',
-    epilog = 'Needs: snakemake, snakebids installed (pip install snakemake, pip install snakebids)')
+    description = 'Organise presurfer outputs, setup for ITKsnap lesion filling and skullstrip T1',
+    epilog = '')
 parser.add_argument('[meso_proj_dir]', help='path to project data directory on mesocentre. e.g., /scratch/{user}/data/{project}')
 parser.add_argument('[subject_number]', help='subject to analyse. OPTIONS: treating specific subjects, accepted formats: 8762, sub-8762, 876-2')
 parser.parse_args()
@@ -143,8 +143,51 @@ for elemt1 in T1w:
     T1w_new = os.path.join(presurfer_anat_dir,T1wname)
     subprocess.call(['cp', T1w_orig, T1w_new])
 
+##Setting up for fsl itksnap
+#---------------------------
+fsl_itksnap_dir = os.path.join(meso_proj_dir, "derivatives/fsl_itksnap/sub-{}/{}/".format(subject, sess))
+os.makedirs(fsl_itksnap_dir,exist_ok=True)
+
+print("Setting up for fsl/itksnap...")
+print("Copying relevant presurfer files to " + fsl_itksnap_dir)
+subprocess.call(['cp', '-r', presurfer_anat_dir, fsl_itksnap_dir])
+
+# Finding FLAWS images
+sub_anat_dir = os.path.join(meso_proj_dir,"sub-{}/{}/anat/".format(subject, sess))
+fsl_itksnap_anat_dir = os.path.join(fsl_itksnap_dir,"anat/")
+
+flaws_image = [flws for flws in os.listdir(sub_anat_dir) if flws.endswith("FLAWS.nii.gz")]
+
+if len(flaws_image) > 0:
+    for im in flaws_image: 
+        print("Copying FLAWS images to " + fsl_itksnap_dir)
+        flaws_path = os.path.join(sub_anat_dir, im)
+        subprocess.call(['cp', flaws_path, fsl_itksnap_anat_dir])
+else: 
+    print("No FLAWS found for subject " + subject)
+    
+## Performing skull-stripping with brainmask 
+#-------------------------------------------
+
+brainmask_new_spl = brainmask_new.split('_')
+brainmask_new_spl[1] = '{}_rec-fillh'.format(brainmask_new_spl[1])
+brainmask_new_spl[0] = brainmask_new_spl[0].replace("presurfer", "fsl_itksnap")
+brainmask_new_filled = '_'.join(brainmask_new_spl)
+
+T1_rec_name = T1w_new.split('_')
+T1_rec_name[2] = T1_rec_name[2].replace("rec-Bc", "rec-BcSs")
+T1_rec_name[0] = T1_rec_name[0].replace("presurfer", "fsl_itksnap")
+T1_rec_name_skullstripped = '_'.join(T1_rec_name)
+
+#Perform fslmaths nb. with orig presurfer output in derivatives/presurfer 
+
+print("Running fslmaths skullstripping to create " + T1_rec_name_skullstripped)
+subprocess.call(['fslmaths', brainmask_new, '-fillh', brainmask_new_filled])
+subprocess.call(['fslmaths', T1w_new, '-mul', brainmask_new_filled, T1_rec_name_skullstripped])
 
 sys.path.append("{}/projects/{}/analysis_code/utils".format(meso_home_dir, projname))
 from permission import change_file_mod, change_file_group
 change_file_mod(presurfer_dir)
 change_file_group(presurfer_dir)
+change_file_mod(fsl_itksnap_dir)
+change_file_group(fsl_itksnap_dir)
