@@ -136,6 +136,7 @@ for elemt1 in T1w:
     spl = elemt1.split('_')
     spl[-1] = 'T1w.nii'
     spl.remove('UNI')
+    spl[1] = '{}_rec-Bc'.format(spl[1])
     T1wname = '_'.join(spl)
 
     T1w_orig = os.path.join(presurfer_MPRAGE_dir,elemt1)
@@ -145,5 +146,5 @@ for elemt1 in T1w:
 
 sys.path.append("{}/projects/{}/analysis_code/utils".format(meso_home_dir, projname))
 from permission import change_file_mod, change_file_group
-change_file_mod(meso_proj_dir)
-change_file_group(meso_proj_dir)
+change_file_mod(presurfer_dir)
+change_file_group(presurfer_dir)
