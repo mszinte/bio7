@@ -115,8 +115,6 @@ if subj == "all":
     #-------------------
     for s in subtotar:
 
-        # Find dicoms
-        #------------
         s_dcm_format = s[0:3] + "-" + s[3]
         s_dicompath = os.path.join(meso_dir_dicoms,s_dcm_format)
         s_dicompath_dirs = [dcm for dcm in os.listdir(s_dicompath)]
@@ -157,8 +155,9 @@ if subj == "all":
                 fp.close()  
                     
                 #Once sure the code works, uncomment for deleting the dicom files
-                dicdir_content = dicdir + "/*"
+                dicdir_content = dicfiles
                 #subprocess.call(["rm", "-rf", dicdir_content])
+                #subprocess.call(["mkdir", dicdir_content])
     
             else: 
                 print("subject "+ str(s) +"more than one dicom series "+ str(s_dicompath_dirs) +", check and filter dicoms before continuing")

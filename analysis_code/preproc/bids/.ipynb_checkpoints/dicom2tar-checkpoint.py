@@ -37,6 +37,7 @@ parser = argparse.ArgumentParser(
     description = 'Convert dicoms to .tar files. Outputs to sourcedata/tarfiles/{subject}_{session}.tar',
     epilog = ' ')
 parser.add_argument('[meso_proj_dir]', help='path to data project directory on mesocentre. e.g., /scratch/{user}/data/{project}')
+parser.add_argument('[subject_number]', help='subject to analyse. OPTIONS: all (treating any untreated subjects), OR, treating specific subjects, accepted formats: 8762, sub-8762, 876-2')
 parser.parse_args()
 
 # Get inputs
@@ -114,8 +115,6 @@ if subj == "all":
     #-------------------
     for s in subtotar:
 
-        # Find dicoms
-        #------------
         s_dcm_format = s[0:3] + "-" + s[3]
         s_dicompath = os.path.join(meso_dir_dicoms,s_dcm_format)
         s_dicompath_dirs = [dcm for dcm in os.listdir(s_dicompath)]
@@ -156,7 +155,7 @@ if subj == "all":
                 fp.close()  
                     
                 #Once sure the code works, uncomment for deleting the dicom files
-                dicdir_content = dicdir + "/*"
+                dicdir_content = dicfiles + "/*"
                 #subprocess.call(["rm", "-rf", dicdir_content])
     
             else: 

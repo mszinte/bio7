@@ -27,13 +27,14 @@ import os
 import sys
 import subprocess
 import shutil
+import json
 
 # Defining Help Messages
 #-----------------------
 import argparse
 parser = argparse.ArgumentParser(
     description = 'Fill lesions in T1 using manual lesionmask before running fmriprep',
-    epilog = 'Needs: fsl installed')
+    epilog = 'Needs: fsl installed for lesion_filling and SimpleITK for creating T1w.json')
 parser.add_argument('[meso_proj_dir]', help='path to project data directory on mesocentre. e.g., /scratch/{user}/data/{project}')
 parser.add_argument('[subject_number]', help='subject to analyse. OPTIONS: treating specific subjects, accepted formats: 8762, sub-8762, 876-2')
 parser.parse_args()
@@ -70,7 +71,7 @@ for inst in dependencies_pyinstall:
         except:
             print('Didnt manage to install {}?'.format(inst))
     else:
-        print('{} already installed!'.format(inst))    
+        print('{} already installed!'.format(inst))
 
 # Getting subject number
 #----------------------- 
@@ -123,8 +124,6 @@ fsl_itksnap_sub_dir = os.path.join(meso_proj_dir, "derivatives/fsl_itksnap/sub-{
 fsl_itksnap_subsess = [ss for ss in os.listdir(fsl_itksnap_sub_dir) if "ses" in ss]
 fsl_itksnap_anat_dir = os.path.join(fsl_itksnap_sub_dir, (fsl_itksnap_subsess[0] + "/anat"))
 
-fsl_itksnap_anat_dir
-
 niftiis = [ni for ni in os.listdir(fsl_itksnap_anat_dir) if ni.endswith(".nii")]
 
 #Gzip all files
@@ -142,7 +141,7 @@ elif len(T1w) == 0:
     print("error: didnt find Rec-BcSs T1w?")
     exit()
 else:
-    print("error: multiple T1s selected? want rec-BcSs T1w")
+    print("error: multiple T1s selected? want rec-BcSs T1w - or already done lesion filling?")
     exit()
     
 lesionmask = [lm for lm in os.listdir(fsl_itksnap_anat_dir) if lm.endswith("lesionmask.nii.gz")]
@@ -175,8 +174,45 @@ else:
 print("lesion filling with fsl lesion_filling")
 subprocess.call(["lesion_filling","-i", T1_skullstripped_path,"-l", lesion_mask_path, "-w", wm_mask_path, "-o", T1_lesionfilled_path])
 
+sess = fsl_itksnap_subsess[0]
+
+sub_proj_dir = "{}/sub-{}/{}/anat".format(meso_proj_dir, subject, sess)
+print("Copying T1s to " + sub_proj_dir)
+
+T1s = [ls for ls in os.listdir(fsl_itksnap_anat_dir) if ls.endswith("T1w.nii.gz")]
+
+print("found " + str(T1s))
+
+for T1image in T1s:
+    T1image_oldpath = os.path.join(fsl_itksnap_anat_dir, T1image)
+    T1image_newpath = os.path.join(sub_proj_dir, T1image)
+    
+    subprocess.call(["cp", T1image_oldpath, T1image_newpath])
+    
+    T1image_jsonpath = T1image_newpath.replace(".nii.gz", ".json")
+    T1image_jsonpath_spl = T1image_jsonpath.split('_')
+    T1image_jsonpath_spl[2] = "acq-UNI"
+    T1image_jsonpath_spl[-1] = T1image_jsonpath_spl[-1].replace("T1w", "MP2RAGE")
+    UNIimage_jsonpath = "_".join(T1image_jsonpath_spl)
+    
+    subprocess.call(["cp", UNIimage_jsonpath, T1image_jsonpath])
+  
+    if "rec-BcSs" in T1image_jsonpath:
+        ss_status = "true"
+        print("adding SkullStripped: " + ss_status + " to " + T1image_jsonpath)
+        
+        with open(T1image_jsonpath) as json_file:
+            json_data = json.load(json_file)
+            json_data["SkullStripped"] = bool(ss_status)
+            json_file.close
+            
+            with open(T1image_jsonpath, 'w') as json_file:
+                json.dump(json_data, json_file, indent=4, sort_keys = True)
+                json_file.close 
 
 sys.path.append("{}/projects/{}/analysis_code/utils".format(meso_home_dir, projname))
 from permission import change_file_mod, change_file_group
 change_file_mod(fsl_itksnap_anat_dir)
 change_file_group(fsl_itksnap_anat_dir)
+change_file_mod(sub_proj_dir)
+change_file_group(sub_proj_dir)

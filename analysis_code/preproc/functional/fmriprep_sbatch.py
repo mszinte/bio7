@@ -7,7 +7,7 @@ Run fMRIprep on mesocentre using job mode
 -----------------------------------------------------------------------------------------
 Input(s):
 sys.argv[1]: main project directory
-sys.argv[2]: project name (correspond to directory)
+
 sys.argv[3]: subject (e.g. sub-001)
 sys.argv[4]: server nb of hour to request (e.g 10)
 sys.argv[5]: anat only (1) or not (0)
@@ -25,12 +25,12 @@ To run:
 1. cd to function
 >> cd ~/projects/bio7/analysis_code/preproc/functional
 2. run python command
-python fmriprep_sbatch.py [main directory] [project name] [subject num]
+python fmriprep_sbatch.py [main directory] [subject num]
                           [hour proc.] [anat only] [aroma] [fmapfree] 
                           [skip bids validation] [cifti] [dof] [email account]
 -----------------------------------------------------------------------------------------
 Exemple:
-python fmriprep_sbatch.py /scratch/jstellmann/data bio7 sub-8061 40 1 0 0 0 1 12 martin.szinte
+python fmriprep_sbatch.py /scratch/jstellmann/data/bio7 sub-8061 40 1 0 0 0 1 12 martin.szinte
 -----------------------------------------------------------------------------------------
 Written by Martin Szinte (martin.szinte@gmail.com)
 -----------------------------------------------------------------------------------------
@@ -44,26 +44,27 @@ import json
 opj = os.path.join
 
 # inputs
-main_dir = sys.argv[1]
-project_dir = sys.argv[2]
-subject = sys.argv[3]
-sub_num = subject[-3:]
-hour_proc = int(sys.argv[4])
-anat = int(sys.argv[5])
-aroma = int(sys.argv[6])
-fmapfree = int(sys.argv[7])
-skip_bids_val = int(sys.argv[8])
-hcp_cifti_val = int(sys.argv[9])
-dof = int(sys.argv[10])
-email_account = sys.argv[11]
+meso_proj_dir = sys.argv[1]
+subject = sys.argv[2]
+sub_num = subject[-4:]
+hour_proc = int(sys.argv[3])
+anat = int(sys.argv[4])
+aroma = int(sys.argv[5])
+fmapfree = int(sys.argv[6])
+skip_bids_val = int(sys.argv[7])
+hcp_cifti_val = int(sys.argv[8])
+dof = int(sys.argv[9])
+email_account = sys.argv[10]
 
 # Define cluster/server specific parameters
 cluster_name  = 'skylake'
 proj_name = 'a306'
-singularity_dir = '/scratch/jstellmann/bio7/code/singularity/fmriprep-20.2.3.simg'
+singularity_dir = '{}/code/singularity/fmriprep-20.2.3.simg'.format(meso_proj_dir)
 nb_procs = 32
 memory_val = 100
-log_dir = opj(main_dir,project_dir,'derivatives','fmriprep','log_outputs')
+log_dir = opj(meso_proj_dir,'derivatives','fmriprep','log_outputs')
+tmp_workdir = "/tmp/fmriprep_wd"
+os.makedirs(tmp_workdir,exist_ok=True)   
 
 # special input
 anat_only, use_aroma, use_fmapfree, anat_only_end, use_skip_bids_val, hcp_cifti, tf_export, tf_bind = '','','','','', '', '', ''
@@ -79,8 +80,8 @@ if skip_bids_val == 1:
     use_skip_bids_val = ' --skip_bids_validation'
 if hcp_cifti_val == 1:
     tf_export = 'export SINGULARITYENV_TEMPLATEFLOW_HOME=/opt/templateflow'
-    tf_bind = ' -B /scratch/jstellmann/bio7/code/singularity/fmriprep_tf/:/opt/templateflow'
-    hcp_cifti = ' --cifti-output 170k'
+    tf_bind = '{}/code/singularity/fmriprep_tf/:/opt/templateflow'.format(meso_proj_dir)
+    hcp_cifti = '--cifti-output 170k'
 
 # define SLURM cmd
 slurm_cmd = """\
@@ -101,17 +102,17 @@ slurm_cmd = """\
            memory_val=memory_val, log_dir=log_dir, email_account=email_account, tf_export=tf_export)
 
 # define singularity cmd
-singularity_cmd = "singularity run --cleanenv{tf_bind} -B {main_dir}:/work_dir {simg} --fs-license-file /work_dir/code/freesurfer/license.txt /work_dir/{project_dir}/ /work_dir/{project_dir}/derivatives/fmriprep/ participant --participant-label {sub_num} -w /work_dir/temp_data/ --bold2t1w-dof {dof} --ignore sbref --output-spaces T1w {hcp_cifti} --low-mem --mem-mb {memory_val}000 --nthreads {nb_procs:.0f}{anat_only}{use_aroma}{use_fmapfree}{use_skip_bids_val}".format(tf_bind=tf_bind, main_dir=main_dir, project_dir=project_dir,
+singularity_cmd = "singularity run --cleanenv -B {meso_proj_dir}:/work_dir,{tf_bind} {simg} --fs-license-file /work_dir/code/freesurfer/license.txt /work_dir/ /work_dir/derivatives/fmriprep/ participant --participant-label {sub_num} -w {tmp_workdir} --bold2t1w-dof {dof} --ignore sbref --output-spaces T1w {hcp_cifti} --bids-filter-file /work_dir/code/config.json --low-mem --mem-mb {memory_val}000 --nthreads {nb_procs:.0f}{anat_only}{use_aroma}{use_fmapfree}{use_skip_bids_val} --skull-strip-t1w skip".format(tf_bind=tf_bind, tmp_workdir=tmp_workdir, meso_proj_dir=meso_proj_dir,
                               simg=singularity_dir, sub_num=sub_num, nb_procs=nb_procs,
                               anat_only=anat_only, use_aroma=use_aroma, use_fmapfree=use_fmapfree,
                               use_skip_bids_val=use_skip_bids_val, hcp_cifti=hcp_cifti, memory_val=memory_val,
                               dof=dof)
 # create sh folder and file
-sh_dir = "{main_dir}/{project_dir}/derivatives/fmriprep/jobs/sub-{sub_num}_fmriprep{anat_only_end}.sh".format(main_dir=main_dir, sub_num=sub_num,project_dir=project_dir, anat_only_end=anat_only_end)
+sh_dir = "{meso_proj_dir}/derivatives/fmriprep/jobs/sub-{sub_num}_fmriprep{anat_only_end}.sh".format(meso_proj_dir=meso_proj_dir, sub_num=sub_num, anat_only_end=anat_only_end)
 
 try:
-    os.makedirs(opj(main_dir,project_dir,'derivatives','fmriprep','jobs'))
-    os.makedirs(opj(main_dir,project_dir,'derivatives','fmriprep','log_outputs'))
+    os.makedirs(opj(meso_proj_dir,'derivatives','fmriprep','jobs'))
+    os.makedirs(opj(meso_proj_dir,'derivatives','fmriprep','log_outputs'))
 except:
     pass
 
