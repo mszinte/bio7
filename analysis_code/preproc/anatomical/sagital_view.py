@@ -7,9 +7,8 @@ Make freeview sagital video of segmentation (to run before and after manual edit
 -----------------------------------------------------------------------------------------
 Input(s):
 sys.argv[1]: main project directory
-sys.argv[2]: project name (correspond to directory)
-sys.argv[3]: subject name (e.g. sub-01)
-sys.argv[4]: video name ('before_edit', 'after_edit')
+sys.argv[2]: subject name (e.g. sub-01)
+sys.argv[3]: video name ('before_edit', 'after_edit')
 -----------------------------------------------------------------------------------------
 Output(s):
 Sagital view video and images of the brain segmentation
@@ -19,17 +18,17 @@ To run:
 1. cd to function
 >> cd ~/disks/meso_H/projects/bio7/analysis_code/preproc/anatomical/
 2. run python command
-python sagital_view.py [main directory] [project name] [subject num] [video name]
+python sagital_view.py [main directory] [subject num] [video name]
 -----------------------------------------------------------------------------------------
 Exemple:
-python sagital_view.py ~/disks/meso_shared bio7 sub-8761 after_edit
+python sagital_view.py ~/disks/meso_shared/bio7 sub-8761 after_edit
 -----------------------------------------------------------------------------------------
 # Written by Martin Szinte (mail@martinszinte.net)
 -----------------------------------------------------------------------------------------
 """
 
 # imports modules
-import subprocess as sb
+import subprocess
 import os
 import ipdb
 import sys
@@ -39,19 +38,18 @@ deb = ipdb.set_trace
 
 # Inputs
 main_dir = sys.argv[1]
-project_dir = sys.argv[2]
-subject = sys.argv[3]
-vid_name = sys.argv[4]
+subject = sys.argv[2]
+vid_name = sys.argv[3]
 
 # define directory
-fs_dir = "{}/{}/derivatives/fmriprep/freesurfer/{}".format(main_dir, project_dir, subject)
+fs_dir = "{}/derivatives/fmriprep/freesurfer/{}".format(main_dir, subject)
 vid_dir = "{}/vid/{}".format(fs_dir, vid_name)
 os.makedirs(vid_dir, exist_ok=True)
 image_dir = "{}/img".format(vid_dir)
 os.makedirs(image_dir, exist_ok=True)
 
 # list commands
-anat_cmd = '-v {}:grayscale=10,100'.format('{}/mri/T1.mgz'.format(fs_dir))
+anat_cmd = 'freeview -v {}:grayscale=10,100'.format('{}/mri/T1.mgz'.format(fs_dir))
 volumes_cmd = '-f {fs_dir}/surf/lh.white:color=red:edgecolor=red \
 -f {fs_dir}/surf/rh.white:color=red:edgecolor=red \
 -f {fs_dir}/surf/lh.pial:color=white:edgecolor=white \
@@ -77,7 +75,7 @@ of.write(freeview_cmd)
 of.close()
 
 # run freeview cmd
-sb.call('freeview -cmd {}'.format(sh_fn), shell=True)
+subprocess.call('freeview -cmd {}'.format(sh_fn), shell=True)
 
 # convert images in video
 mk_vid_cmd = 'ffmpeg -framerate 5 -pattern_type glob -i "{}/*.png" -b:v 2M -c:v mpeg4 {}/{}_{}.mp4'.format(image_dir, vid_dir, subject, vid_name)
