@@ -26,11 +26,11 @@ To run:
 >> cd ~/projects/bio7/analysis_code/preproc/functional
 2. run python command
 python fmriprep_sbatch.py [main directory] [subject num]
-                          [hour proc.] [anat only] [aroma] [fmapfree] 
-                          [skip bids validation] [cifti] [dof] [email account]
+                          [aroma] [fmapfree] 
+                          [skip bids validation] [dof] [email account]
 -----------------------------------------------------------------------------------------
 Exemple:
-python fmriprep_sbatch.py /scratch/jstellmann/data/bio7 sub-8061 40 1 0 0 0 1 12 martin.szinte
+python fmriprep_sbatch.py /scratch/jstellmann/data/bio7 sub-8061 0 0 1 12 martin.szinte
 -----------------------------------------------------------------------------------------
 Written by Martin Szinte (martin.szinte@gmail.com)
 -----------------------------------------------------------------------------------------
