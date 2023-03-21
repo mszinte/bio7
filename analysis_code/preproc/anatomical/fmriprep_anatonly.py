@@ -98,7 +98,7 @@ if hcp_cifti_val == 1:
 output_spaces = 'MNI152NLin6Asym MNI152NLin2009cAsym'
 
 #define SLURM values
-hour_proc=34    
+hour_proc = 34    
 nb_procs = 8
 memory_val = 100
 
