@@ -71,8 +71,9 @@ if meso_proj_dir.endswith("/"): meso_proj_dir=meso_proj_dir[:-1]
 else: pass
 
 projname = meso_proj_dir.split('/')[-1]
-s_bind = "/".join(meso_proj_dir.split("/")[:-1])
-s_bind = ","+s_bind
+data_folder = "/".join(meso_proj_dir.split("/")[:-1])
+tmp_workdir = data_folder + "/tmp/fmriprep_wd_{}".format(email_account.split(".")[-1])
+s_bind = ","+data_folder
 
 #Define subject
 #--------------
@@ -84,7 +85,6 @@ sub_number = sub_label[4:]
 singularity_dir = '{}/code/singularity/fmriprep-20.2.3.simg'.format(meso_proj_dir)
 
 log_dir = os.path.join(meso_proj_dir,'derivatives','fmriprep','log_outputs')
-tmp_workdir = "/tmp/fmriprep_wd"
 os.makedirs(tmp_workdir,exist_ok=True)   
 
 # Find freesurfer and anat outputs
@@ -107,9 +107,11 @@ if hcp_cifti_val == 1:
     tf_bind = ',{}/code/singularity/fmriprep_tf/:/opt/templateflow'.format(meso_proj_dir)
     hcp_cifti = '--cifti-output 170k'
 
+output_spaces = 'MNI152NLin6Asym MNI152NLin2009cAsym'   
+
 #define SLURM values
-hour_proc=20    
-nb_procs = 32
+hour_proc= 20    
+nb_procs = 8
 memory_val = 100
 
 # define SLURM cmd
@@ -118,7 +120,7 @@ slurm_cmd = """\
 #SBATCH --mail-type=ALL
 #SBATCH -p skylake
 #SBATCH --mail-user={email_account}@univ-amu.fr
-#SBATCH -A a306
+#SBATCH -A b306
 #SBATCH --nodes=1
 #SBATCH --mem={memory_val}gb
 #SBATCH --cpus-per-task={nb_procs}
@@ -131,7 +133,7 @@ slurm_cmd = """\
            memory_val=memory_val, log_dir=log_dir, email_account=email_account, tf_export=tf_export)
 
 # define singularity cmd
-singularity_cmd = "singularity run --cleanenv -B {meso_proj_dir}:/work_dir{tf_bind}{s_bind} {simg} --fs-subjects-dir {fs_deriv} --fs-license-file /work_dir/code/freesurfer/license.txt /work_dir/ /work_dir/derivatives/fmriprep/ participant --participant-label {sub_num} -w {tmp_workdir} --ignore sbref --low-mem --mem-mb {memory_val}000 --nthreads {nb_procs:.0f} --anat-derivatives {anat_deriv} --skull-strip-t1w skip --bold2t1w-dof {dof} {use_aroma} {hcp_cifti} {use_skip_bids_val} --bids-filter-file /work_dir/code/config.json".format(tmp_workdir=tmp_workdir, tf_bind=tf_bind, s_bind=s_bind, meso_proj_dir=meso_proj_dir, simg=singularity_dir, fs_deriv=fs_deriv, sub_num=sub_number, nb_procs=nb_procs, memory_val=memory_val, anat_deriv=anat_deriv, dof=dof, use_aroma=use_aroma, hcp_cifti=hcp_cifti, use_skip_bids_val=use_skip_bids_val)
+singularity_cmd = "singularity run --cleanenv -B {meso_proj_dir}:/work_dir{tf_bind}{s_bind} {simg} --fs-subjects-dir {fs_deriv} --fs-license-file /work_dir/code/freesurfer/license.txt /work_dir/ /work_dir/derivatives/fmriprep/ participant --participant-label {sub_num} -w {tmp_workdir} --ignore sbref --low-mem --mem-mb {memory_val}000 --nthreads {nb_procs:.0f} --anat-derivatives {anat_deriv} --output-spaces T1w {output_spaces} --skull-strip-t1w skip --bold2t1w-dof {dof} {use_aroma} {hcp_cifti} {use_skip_bids_val} --bids-filter-file /work_dir/code/config.json".format(tmp_workdir=tmp_workdir, tf_bind=tf_bind, s_bind=s_bind, meso_proj_dir=meso_proj_dir, simg=singularity_dir, fs_deriv=fs_deriv, sub_num=sub_number, nb_procs=nb_procs, memory_val=memory_val, output_spaces=output_spaces, anat_deriv=anat_deriv, dof=dof, use_aroma=use_aroma, hcp_cifti=hcp_cifti, use_skip_bids_val=use_skip_bids_val)
 # create sh folder and file
 sh_dir = "{meso_proj_dir}/derivatives/fmriprep/jobs/sub-{sub_num}_fmriprep_functional.sh".format(meso_proj_dir=meso_proj_dir, sub_num=sub_number)
 
