@@ -42,7 +42,7 @@ subject = sys.argv[2]
 vid_name = sys.argv[3]
 
 # define directory
-fs_dir = "{}/derivatives/fmriprep/freesurfer/{}".format(main_dir, subject)
+fs_dir = "{}/derivatives/fmriprep_manual/freesurfer/{}".format(main_dir, subject)
 vid_dir = "{}/vid/{}".format(fs_dir, vid_name)
 os.makedirs(vid_dir, exist_ok=True)
 image_dir = "{}/img".format(vid_dir)
