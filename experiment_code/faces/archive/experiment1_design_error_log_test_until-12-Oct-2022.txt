@@ -1,0 +1,4 @@
+error1_screenrefresh : measured framerate not good? Got: 0.0069441, Want: 0.0083333
+error2_screenrefresh : measured Hz not good? Got: 144.0081, Want: 120
+warning_images1 : not enough images per emo categories for no of trials, reducing number and forcing repeated images
+warning_restimages1 : not enough images per emo categories for no of trials, reducing number and forcing repeated images

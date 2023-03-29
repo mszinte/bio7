@@ -1,0 +1,3 @@
+
+recalculate cum trial time after shuffling 
+
