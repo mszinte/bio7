@@ -1,0 +1,2 @@
+error1_screenrefresh : measured framerate not good? Got: 0.0069511, Want: 0.0083333
+error2_screenrefresh : measured Hz not good? Got: 143.8618, Want: 120
