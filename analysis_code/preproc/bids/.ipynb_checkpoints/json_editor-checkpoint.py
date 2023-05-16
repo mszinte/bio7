@@ -7,20 +7,16 @@ Created on Mon Oct 24 17:40:18 2022
 -----------------------------------------------------------------------------------------
 json_editor.py
 
-script location: projects/bio7/analysis_code/preproc/bids/json_editor.py
------------------------------------------------------------------------------------------
 Goal of the script:
-Clean up and correct json files in bids directories
+Clean up and correct json files in bids directories and match fmaps with func runs
 -----------------------------------------------------------------------------------------
 Input(s):
-Input(s):
-sys.argv[1]: mesocentre project directory (e.g. /scratch/jstellmann/data/bio7)
-
+sys.argv[1]: mesocentre project directory (e.g. /scratch/{user}/data/{project})
 -----------------------------------------------------------------------------------------
 To run:
 On mesocentre
 
->> cd ~/projects/bio7/analysis_code/preproc/bids
+>> cd ~/projects/{project}/analysis_code/preproc/bids
 >> python json_editor.py [meso_proj_dir]
 -----------------------------------------------------------------------------------------
 """
@@ -35,7 +31,7 @@ import sys
 #-----------------------
 import argparse
 parser = argparse.ArgumentParser(
-    description = 'Log, and reformat (if necessary), dicoms. Searches: MRI acquired in 1 sessions instead of 2, and mpr screenshot dicoms',
+    description = 'Matches fmaps with func bold / dti scans using IntendedFor, and removes institution info',
     epilog = ' ')
 parser.add_argument('[meso_proj_dir]', help='path to data project directory on mesocentre. e.g., /scratch/{user}/data/{project}')
 parser.parse_args()

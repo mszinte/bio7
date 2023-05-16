@@ -10,24 +10,20 @@ dicom_editor.py
 script location: projects/bio7/analysis_code/preproc/bids/dicom_editor.py
 -----------------------------------------------------------------------------------------
 Goal of the script:
-Before running dicom2tar.py, run/ran this code to log, and reformat (if necessary), dicoms. 
+Before running dicom2tar.py run this code to log and reformat (if necessary), dicoms. 
 Error 1: If MRI run as 1 session, splits into 2 sessions before/after scout scans.
 Error 2: Removes dicom screenshots with format 01_5005_*
 -----------------------------------------------------------------------------------------
 Input(s):
-sys.argv[1]: mesocentre project directory (e.g. /scratch/ptilsley/data/bio7)
+sys.argv[1]: mesocentre project directory (e.g. /scratch/{user}/data/{project})
 sys.argv[2]: subject number/label any following format (e.g. 8762, sub-8762, 876-1)
 -----------------------------------------------------------------------------------------
 To run:
 On mesocentre
 
->> cd ~/projects/bio7/analysis_code/preproc/bids
+>> cd ~/projects/{project}/analysis_code/preproc/bids
 >> python dicom_editor.py [meso_proj_dir] [subject_number]
 -----------------------------------------------------------------------------------------
-
-01_0001_aahead-scout-32ch-head-coil                     
-01_5002_right-on-mpr-collection
-
 """
 
 # General imports

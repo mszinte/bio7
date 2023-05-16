@@ -47,11 +47,11 @@ subject_level = sys.argv[2]
 
 # Check inputs
 # ------------
-if os.path.isdir(meso_proj_dir):
-    print("meso sourcedata input OK")
-else:
-    print("meso sourcedata input doesnt exist")
-    exit()
+if os.path.isdir(meso_proj_dir): print("meso sourcedata input OK")
+else: print("meso sourcedata input doesnt exist"); exit()
+
+if meso_proj_dir.endswith("/"): meso_proj_dir=meso_proj_dir[:-1]
+else: pass
  
 # Define homedir + sourcedirectory
 #---------------------------------

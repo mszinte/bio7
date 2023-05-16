@@ -14,13 +14,6 @@ Output(s):
 Defaced images
 -----------------------------------------------------------------------------------------
 To run:
-Example prf:
-python deface_sbatch.py /scratch/mszinte/data stereo_prf sub-01 1 0
-
-cd /home/mszinte/projects/stereo_prf/mri_analysis/preproc/
-python bids/deface_sbatch.py [main directory] [project name] [subject num] [overwrite] [server]
------------------------------------------------------------------------------------------
-To run:
 Example BIO7:
 python deface_sbatch.py /scratch/jstellmann/data/bio7 sub-8761 1
 
@@ -57,13 +50,10 @@ server_in = int(sys.argv[3])
 
 # Check inputs
 # ------------
-if os.path.isdir(meso_proj_dir):
-    print("meso project input OK")
+if os.path.isdir(meso_proj_dir): print("meso project input OK")
     if meso_proj_dir.endswith("/"):
-        #True
         meso_proj_dir = meso_proj_dir[:-1]
     else:
-        #True
         pass            
 else:
     print("meso project input doesnt exist")
