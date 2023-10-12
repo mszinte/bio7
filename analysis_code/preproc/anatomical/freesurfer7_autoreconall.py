@@ -17,10 +17,10 @@ To run:
 1. cd to function
 >> ~/projects/bio7/analysis_code/preproc/anatomical/
 2. run python command
-python freesurfer_pial.py [main directory] [subject] [freesurfer_version]
+python freesurfer_pial.py [main directory] [subject]
 -----------------------------------------------------------------------------------------
 Exemple:
-python freesurfer_pial.py /scratch/jstellmann/data/bio7 sub-8762 7
+python freesurfer_pial.py /scratch/jstellmann/data/bio7 sub-8764
 -----------------------------------------------------------------------------------------
 Written by Martin Szinte (mail@martinszinte.net)
 -----------------------------------------------------------------------------------------
@@ -34,7 +34,6 @@ import json
 # inputs
 main_dir = sys.argv[1]
 subject = sys.argv[2]
-fs_version = int(sys.argv[3])
 
 # Define cluster/server specific parameters
 cluster_name = 'skylake'
@@ -45,7 +44,7 @@ memory_val = 48
 proj = main_dir.split('/')[-1]
 
 if proj == "bio7": 
-    proj_name = 'b306'
+    proj_name = 'a306'
     group = 306
 else: pass
 
@@ -53,22 +52,8 @@ else: pass
 # define directory and freesurfer licence
 log_dir = "{}/derivatives/freesurfer_pial/log_outputs".format(main_dir)
 job_dir = "{}/derivatives/freesurfer_pial/jobs".format(main_dir)
-
-if fs_version == 7:
-    fs_dir = "{}/derivatives/fmriprep/freesurfer/".format(main_dir)
-    fs_licence = '{}/code/freesurfer7/license.txt'.format(main_dir)
-    fs_home = '{}/code/freesurfer7'.format(main_dir)
-    
-elif fs_version == 6:
-    fs_dir = "{}/derivatives/fmriprep/freesurfer/".format(main_dir)
-    fs_licence = '{}/code/freesurfer/license.txt'.format(main_dir)
-    fs_home = '{}/code/freesurfer'.format(main_dir)
-    
-else:
-    print('freesurfer version invalid, 6 or 7')
-    exit()
-
-
+fs_dir = "{}/derivatives/freesurfer7/".format(main_dir)
+fs_licence = '/scratch/jstellmann/data/freesurfer/license.txt'
 os.makedirs(log_dir, exist_ok=True)
 os.makedirs(job_dir, exist_ok=True)
 
@@ -94,11 +79,11 @@ chgrp_cmd = "chgrp -Rf {group} {main_dir}\n".format(main_dir=main_dir, group=gro
 
 # define freesurfer command
 freesurfer_cmd = """\
-export FREESURFER_HOME={}\n\
+export FREESURFER_HOME={}/code/freesurfer
 export SUBJECTS_DIR={}\n\
 export FS_LICENSE={}\n\
 source $FREESURFER_HOME/SetUpFreeSurfer.sh
-recon-all -autorecon-pial -subjid {} -no-isrunning""".format(fs_home, fs_dir, fs_licence, subject)
+recon-all -autorecon-pial -subjid {} -no-isrunning""".format(main_dir, fs_dir, fs_licence, subject)
 
 # create sh folder and file
 sh_dir = "{}/{}_freesurfer-pial.sh".format(job_dir, subject)

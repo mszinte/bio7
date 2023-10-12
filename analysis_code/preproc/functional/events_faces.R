@@ -185,7 +185,7 @@ df.tmp <- list(onsets_tsv,onsets_tsv,onsets_tsv,onsets_tsv)
 for (i in 1:runs) {
   tmp <- X[[i]]
   df.tmp[[i]][["onset"]] <- tmp[["onset_target"]] - tmp[["onset_run"]][1]
-  df.tmp[[i]][["duration"]] <- tmp[["onset_response"]] - tmp[["onset_target"]]
+  df.tmp[[i]][["duration"]] <- tmp[["onset_mask"]] - tmp[["onset_target"]]
   df.tmp[[i]][["trial_type"]] <- tmp[["trial_type"]]
   df.tmp[[i]][["response_time"]] <- tmp[["duration_target"]] + tmp[["duration_mask"]] + tmp[["reaction_time"]]
   df.tmp[[i]][["response_correct"]] <- tmp[["response_correct"]]
